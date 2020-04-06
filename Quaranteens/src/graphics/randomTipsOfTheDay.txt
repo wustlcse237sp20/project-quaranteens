@@ -1,0 +1,32 @@
+This is the first tip.
+Have a good day!
+Smile!
+It's Panera Bread, not St Louis Bread Co. -- thanks
+I miss Panera Bread :(
+This is the sixth tip
+Don't go outside
+Except to shop for essentials
+Remember to smile
+Remember to exercise
+It's is alright to leave your house to take walks around your neighborhood.
+But stay six feet away from everyone.
+Wear a mask.
+This is the 14th tip
+This is the 15th tip
+
+
+
+//skeletal framework of file reading, for now -- work on in 2nd iteration
+//		try {
+//			BufferedReader readRandomTipsOfTheDayFile = new BufferedReader(new FileReader("./randomTipsOfTheDay.txt"));
+//			for (int i  = 0; i < 14; i++) {
+//				String line = readRandomTipsOfTheDayFile.readLine();
+//				listOfTips.add(line);
+//			}
+//		} 
+//		catch (FileNotFoundException e) {
+//			e.printStackTrace();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
