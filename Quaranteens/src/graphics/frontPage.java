@@ -98,13 +98,13 @@ public class frontPage {
 	/*
 	 * maxValueOfProgressBar randomly generates a max value for the progress bar, which never ends, meant to jump around, comedic
 	 */
-	public int maxValueOfProgressBar() {
-		int max = ((int) (Math.random() * 200));
-		while (max < this.counterOfTheDay) {
-			max = ((int) (Math.random() * 200));
+	public int setRandomValueOfProgressBar() {
+		int value = ((int) (Math.random() * 100));
+		while (value > this.counterOfTheDay) {
+			value = ((int) (Math.random() * 100));
 		}
 		
-		this.progressBarPercentage = max;
+		this.progressBarPercentage = value;
 		return this.progressBarPercentage;
 	}
 }
