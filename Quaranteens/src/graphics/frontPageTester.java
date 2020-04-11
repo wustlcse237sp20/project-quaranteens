@@ -15,11 +15,9 @@ class frontPageTester {
 		int dayChange = 0;
 		
 		//this just tests for today's date
-		assertEquals (26, fp.counterOfTheDay);
-		
-		
-		
+		assertEquals (26, fp.counterOfTheDay);	
 	}
+	
 	
 	@Test
 	void testGenerateTipOfTheDay() {
@@ -28,9 +26,6 @@ class frontPageTester {
 		System.out.println(tip);
 		assertEquals(String.class, tip.getClass());
 	}
-	
-
-	
 	
 
 }
