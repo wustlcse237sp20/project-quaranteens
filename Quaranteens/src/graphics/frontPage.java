@@ -58,15 +58,25 @@ public class frontPage {
 		 */
 	public String generateTipOfTheDay() {
 		ArrayList<String> listOfTips = new ArrayList<String>();
-		String[] tips = this.createTipsOfTheDay();
-		for (int j = 0; j < 4; j++) {
-			listOfTips.add(tips[j]);
+		String path = "src/docs/randomTipsOfTheDay.txt";
+		try {
+			BufferedReader readRandomTipsOfTheDayFile = new BufferedReader(new FileReader(path));
+			for (int i  = 0; i < 14; i++) {
+				String line = readRandomTipsOfTheDayFile.readLine();
+				listOfTips.add(line);
+			}
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		int selectingATip = (int) (Math.random() * 4);
-		String tip = listOfTips.get(selectingATip);
-		this.tipOfTheDay = tip;
-		return this.tipOfTheDay;
-	
+		
+		int randomTipIndex = (int) (Math.random() * listOfTips.size());
+		String tipToShow = listOfTips.get(randomTipIndex);
+		
+		return tipToShow;
 	}
 	
 	/*

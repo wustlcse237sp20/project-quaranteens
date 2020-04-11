@@ -19,7 +19,9 @@ class frontPageTester {
 			}
 			currentTime = nextTime;
 		assertEquals (dayCounter, fp.counterOfTheDay);
+
 	}
+	
 	
 	@Test
 	void testGenerateTipOfTheDay() {
