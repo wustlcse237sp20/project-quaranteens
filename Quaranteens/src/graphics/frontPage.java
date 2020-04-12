@@ -61,8 +61,8 @@ public class frontPage {
 		String path = "src/docs/randomTipsOfTheDay.txt";
 		try {
 			BufferedReader readRandomTipsOfTheDayFile = new BufferedReader(new FileReader(path));
-			for (int i  = 0; i < 14; i++) {
-				String line = readRandomTipsOfTheDayFile.readLine();
+			String line = readRandomTipsOfTheDayFile.readLine();
+			while (line != null) {
 				listOfTips.add(line);
 			}
 		} 
@@ -95,16 +95,6 @@ public class frontPage {
 		return this.counterOfTheDay;
 	}
 	
-	//hardcode for now 
-	public String[] createTipsOfTheDay() {
-		this.tipsOfTheDay[0] = "This is the first tip";
-		this.tipsOfTheDay[1] = "This is the second tip";
-		this.tipsOfTheDay[2] = "This is the third tip";
-		this.tipsOfTheDay[3] = "This is the fourth tip";
-		this.tipsOfTheDay[4] = "This is the fifth tip";
-		return this.tipsOfTheDay;
-		
-	}
 	/*
 	 * maxValueOfProgressBar randomly generates a max value for the progress bar, which never ends, meant to jump around, comedic
 	 */
