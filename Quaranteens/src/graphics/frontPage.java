@@ -19,12 +19,11 @@ public class frontPage {
 	private int progressBarPercentage;
 	private String[] tipsOfTheDay = new String[5];
 	
-	//openingDate placeholder for now
+	//openingDate is when WashU kicked us out - Sad
 	@SuppressWarnings("deprecation")
 	public Date openingDate = new Date(120, 2, 11);
 	public Date currentDate = new Date();
 	
-	//public PrintWriter filesForTipOfTheDay = new PrintWriter(new BufferedWriter(new FileWriter("foo.out")));
 	
 	public frontPage() {
 		this.progressBarPercentage = 0;
@@ -96,7 +95,7 @@ public class frontPage {
 	}
 	
 	/*
-	 * maxValueOfProgressBar randomly generates a max value for the progress bar, which never ends, meant to jump around, comedic
+	 * setRandomValueOfProgressBar randomly generates a max value for the progress bar, which never ends, meant to jump around, comedic
 	 */
 	public int setRandomValueOfProgressBar() {
 		int value = ((int) (Math.random() * 100));
