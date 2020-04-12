@@ -16,15 +16,14 @@ public class frontPage {
 
 	private String tipOfTheDay;
 	public int counterOfTheDay;
+	public ArrayList<String> listOfTips;
 	private int progressBarPercentage;
-	private String[] tipsOfTheDay = new String[5];
 	
-	//openingDate placeholder for now
+	//openingDate is when WashU kicked us out - Sad
 	@SuppressWarnings("deprecation")
 	public Date openingDate = new Date(120, 2, 11);
 	public Date currentDate = new Date();
 	
-	//public PrintWriter filesForTipOfTheDay = new PrintWriter(new BufferedWriter(new FileWriter("foo.out")));
 	
 	public frontPage() {
 		this.progressBarPercentage = 0;
@@ -57,14 +56,25 @@ public class frontPage {
 		 * returns the random tip of the day
 		 */
 	public String generateTipOfTheDay() {
-		ArrayList<String> listOfTips = new ArrayList<String>();
+		int randomTipIndex = (int) (Math.random() * this.listOfTips.size());
+		String tipToShow = this.listOfTips.get(randomTipIndex);
+		this.tipOfTheDay = tipToShow;
+		
+		return this.tipOfTheDay;
+	}
+
+
+	public void readTipFromFile() {
+		this.listOfTips = new ArrayList<String>();
 		String path = "src/docs/randomTipsOfTheDay.txt";
 		try {
 			BufferedReader readRandomTipsOfTheDayFile = new BufferedReader(new FileReader(path));
-			for (int i  = 0; i < 14; i++) {
-				String line = readRandomTipsOfTheDayFile.readLine();
+			String line = readRandomTipsOfTheDayFile.readLine();
+			while (line != null) {
 				listOfTips.add(line);
+				line = readRandomTipsOfTheDayFile.readLine();
 			}
+			readRandomTipsOfTheDayFile.close();
 		} 
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -72,11 +82,6 @@ public class frontPage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		int randomTipIndex = (int) (Math.random() * listOfTips.size());
-		String tipToShow = listOfTips.get(randomTipIndex);
-		
-		return tipToShow;
 	}
 	
 	/*
@@ -95,26 +100,16 @@ public class frontPage {
 		return this.counterOfTheDay;
 	}
 	
-	//hardcode for now 
-	public String[] createTipsOfTheDay() {
-		this.tipsOfTheDay[0] = "This is the first tip";
-		this.tipsOfTheDay[1] = "This is the second tip";
-		this.tipsOfTheDay[2] = "This is the third tip";
-		this.tipsOfTheDay[3] = "This is the fourth tip";
-		this.tipsOfTheDay[4] = "This is the fifth tip";
-		return this.tipsOfTheDay;
-		
-	}
 	/*
-	 * maxValueOfProgressBar randomly generates a max value for the progress bar, which never ends, meant to jump around, comedic
+	 * setRandomValueOfProgressBar randomly generates a max value for the progress bar, which never ends, meant to jump around, comedic
 	 */
-	public int maxValueOfProgressBar() {
-		int max = ((int) (Math.random() * 200));
-		while (max < this.counterOfTheDay) {
-			max = ((int) (Math.random() * 200));
+	public int setRandomValueOfProgressBar() {
+		int value = ((int) (Math.random() * 100));
+		while (value > this.counterOfTheDay) {
+			value = ((int) (Math.random() * 100));
 		}
 		
-		this.progressBarPercentage = max;
+		this.progressBarPercentage = value;
 		return this.progressBarPercentage;
 	}
 }

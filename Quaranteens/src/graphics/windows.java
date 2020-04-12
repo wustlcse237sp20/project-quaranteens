@@ -77,21 +77,13 @@ public class windows {
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 3, SpringLayout.SOUTH, lblNewLabel);
 		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 10, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -45, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 0, SpringLayout.EAST, lblNewLabel);
 		frame.getContentPane().add(tabbedPane);
 		
-		//FIXME
-		JProgressBar progressBar = new JProgressBar(0, 100000);
-		progressBar.setStringPainted(true);
-		int maxValueOfProgressBar = frontPageController.maxValueOfProgressBar();
-		progressBar.setValue(100000);
-	
-		springLayout.putConstraint(SpringLayout.EAST, progressBar, -10, SpringLayout.EAST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -18, SpringLayout.NORTH, progressBar);
-		
-		
 		txtTipOfThe = new JTextField();
 		txtTipOfThe.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		frontPageController.readTipFromFile();
 		String tip = frontPageController.generateTipOfTheDay();
 		txtTipOfThe.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTipOfThe.setEditable(false);
@@ -121,9 +113,18 @@ public class windows {
 		JPanel Info = new JPanel();
 		tabbedPane.addTab("Info", null, Info, null);
 		tabbedPane.setBackgroundAt(5, new Color(255, 51, 51));
-		springLayout.putConstraint(SpringLayout.WEST, progressBar, 10, SpringLayout.WEST, frame.getContentPane());
+		
+		int valueOfProgressBar = frontPageController.setRandomValueOfProgressBar();
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setStringPainted(true);
+		progressBar.setValue(valueOfProgressBar);
+		springLayout.putConstraint(SpringLayout.WEST, progressBar, 32, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, progressBar, -10, SpringLayout.SOUTH, frame.getContentPane());
-		progressBar.setMaximum(1000000);
+		springLayout.putConstraint(SpringLayout.EAST, progressBar, 392, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(progressBar);
+		
+		
+		
+
 	}
 }
