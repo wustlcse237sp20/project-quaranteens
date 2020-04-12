@@ -26,6 +26,7 @@ class frontPageTester {
 	@Test
 	void testGenerateTipOfTheDay() {
 		frontPage fp = new frontPage();
+		fp.readTipFromFile();
 		String tip = fp.generateTipOfTheDay();
 		System.out.println(tip);
 		assertEquals(String.class, tip.getClass());

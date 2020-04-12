@@ -83,6 +83,7 @@ public class windows {
 		
 		txtTipOfThe = new JTextField();
 		txtTipOfThe.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		frontPageController.readTipFromFile();
 		String tip = frontPageController.generateTipOfTheDay();
 		txtTipOfThe.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTipOfThe.setEditable(false);

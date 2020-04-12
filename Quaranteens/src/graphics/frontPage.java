@@ -16,8 +16,8 @@ public class frontPage {
 
 	private String tipOfTheDay;
 	public int counterOfTheDay;
+	public ArrayList<String> listOfTips;
 	private int progressBarPercentage;
-	private String[] tipsOfTheDay = new String[5];
 	
 	//openingDate is when WashU kicked us out - Sad
 	@SuppressWarnings("deprecation")
@@ -56,14 +56,25 @@ public class frontPage {
 		 * returns the random tip of the day
 		 */
 	public String generateTipOfTheDay() {
-		ArrayList<String> listOfTips = new ArrayList<String>();
+		int randomTipIndex = (int) (Math.random() * this.listOfTips.size());
+		String tipToShow = this.listOfTips.get(randomTipIndex);
+		this.tipOfTheDay = tipToShow;
+		
+		return this.tipOfTheDay;
+	}
+
+
+	public void readTipFromFile() {
+		this.listOfTips = new ArrayList<String>();
 		String path = "src/docs/randomTipsOfTheDay.txt";
 		try {
 			BufferedReader readRandomTipsOfTheDayFile = new BufferedReader(new FileReader(path));
 			String line = readRandomTipsOfTheDayFile.readLine();
 			while (line != null) {
 				listOfTips.add(line);
+				line = readRandomTipsOfTheDayFile.readLine();
 			}
+			readRandomTipsOfTheDayFile.close();
 		} 
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -71,11 +82,6 @@ public class frontPage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		int randomTipIndex = (int) (Math.random() * listOfTips.size());
-		String tipToShow = listOfTips.get(randomTipIndex);
-		
-		return tipToShow;
 	}
 	
 	/*
