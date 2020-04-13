@@ -15,8 +15,10 @@ import java.util.ArrayList;
 public class frontPage {
 
 	private String tipOfTheDay;
+	private String movieOfTheDay;
 	public int counterOfTheDay;
 	public ArrayList<String> listOfTips;
+	public ArrayList<String> listOfMovies;
 	private int progressBarPercentage;
 	
 	//openingDate is when WashU kicked us out - Sad
@@ -29,6 +31,7 @@ public class frontPage {
 		this.progressBarPercentage = 0;
 		this.counterOfTheDay = 0;
 		this.tipOfTheDay = "";
+		this.movieOfTheDay = "";
 	}
 	
 	
@@ -83,6 +86,36 @@ public class frontPage {
 			e.printStackTrace();
 		}
 	}
+	
+	public String generateMovieRec() {
+		int randomMovieIndex = (int) (Math.random() * this.listOfMovies.size());
+		String movieToShow = this.listOfMovies.get(randomMovieIndex);
+		this.movieOfTheDay = movieToShow;
+		
+		return this.movieOfTheDay;
+	}
+	
+	public void readMovieRecFromFile() {
+		this.listOfMovies = new ArrayList<String>();
+		String path = "src/docs/movieRecs.txt";
+		try {
+			BufferedReader readMovieRecsFile = new BufferedReader(new FileReader(path));
+			String line = readMovieRecsFile.readLine();
+			while (line != null) {
+				listOfTips.add(line);
+				line = readMovieRecsFile.readLine();
+			}
+			readMovieRecsFile.close();
+		} 
+		catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+
 	
 	/*
 	 * updateDayCounter calculates the number of days since the user has started quarantine by subtracting the current time by the time the program was opened for the first time.
