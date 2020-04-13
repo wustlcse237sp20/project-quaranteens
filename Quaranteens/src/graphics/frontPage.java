@@ -55,7 +55,8 @@ public class frontPage {
 
 
 	/*
-		 * generateTipOfTheDay reads the "randomTipsOfTheDay.txt" file and randomly chooses a line from the file to display for the use
+		 * generateTipOfTheDay reads the "randomTipsOfTheDay.txt" file and
+		 * randomly chooses a line from the file to display for the use
 		 * returns the random tip of the day
 		 */
 	public String generateTipOfTheDay() {
@@ -65,7 +66,6 @@ public class frontPage {
 		
 		return this.tipOfTheDay;
 	}
-
 
 	public void readTipFromFile() {
 		this.listOfTips = new ArrayList<String>();
@@ -87,6 +87,11 @@ public class frontPage {
 		}
 	}
 	
+	/*
+	 * generateMovieRec reads the "movieRecs.txt" file and
+	 * randomly chooses a line from the file to display for the use
+	 * returns the random movie rec of the day
+	 */
 	public String generateMovieRec() {
 		int randomMovieIndex = (int) (Math.random() * this.listOfMovies.size());
 		String movieToShow = this.listOfMovies.get(randomMovieIndex);
