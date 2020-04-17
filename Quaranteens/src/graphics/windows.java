@@ -28,7 +28,7 @@ public class windows {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField txtTipOfThe;
+	private JTextArea txtTipOfThe;
 
 	/**
 	 * Launch the application.
@@ -62,9 +62,10 @@ public class windows {
 		frontPage frontPageController = new frontPage();
 		
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 255, 204));
+		frame.getContentPane().setBackground(new Color(254, 255, 223));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
 		int daysSinceQuarantine = frontPageController.updateDayCounter();
 		SpringLayout springLayout = new SpringLayout();
@@ -73,46 +74,54 @@ public class windows {
 		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 10, SpringLayout.NORTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel, -10, SpringLayout.EAST, frame.getContentPane());
 		frame.getContentPane().add(lblNewLabel);
+		lblNewLabel.setFont(new Font("Menlo", Font.PLAIN, 12));
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 3, SpringLayout.SOUTH, lblNewLabel);
 		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 10, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -45, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 0, SpringLayout.EAST, lblNewLabel);
+		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		frame.getContentPane().add(tabbedPane);
 		
-		txtTipOfThe = new JTextField();
-		txtTipOfThe.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtTipOfThe = new JTextArea();
+		txtTipOfThe.setFont(new Font("Menlo", Font.PLAIN, 16));
 		frontPageController.readTipFromFile();
 		String tip = frontPageController.generateTipOfTheDay();
-		txtTipOfThe.setHorizontalAlignment(SwingConstants.CENTER);
+//		txtTipOfThe.orientation(SwingConstants.CENTER);
 		txtTipOfThe.setEditable(false);
 		txtTipOfThe.setText("Tip of the day: " + tip);
+		txtTipOfThe.setLineWrap(true);
+		txtTipOfThe.setWrapStyleWord(true);
 		tabbedPane.addTab("Tip", null, txtTipOfThe, null);
-		tabbedPane.setBackgroundAt(0, new Color(255, 153, 255));
+		tabbedPane.setBackgroundAt(0, new Color(254, 255, 223));
 		txtTipOfThe.setColumns(10);
 		
 		JTextArea txtrDiary = new JTextArea();
 		txtrDiary.setLineWrap(true);
 		tabbedPane.addTab("Diary", null, txtrDiary, null);
-		tabbedPane.setBackgroundAt(1, new Color(255, 153, 204));
+		tabbedPane.setBackgroundAt(1, new Color(212, 234, 206));
+		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
 		textField = new JTextField();
 		tabbedPane.addTab("Checklist", null, textField, null);
-		tabbedPane.setBackgroundAt(2, new Color(255, 153, 153));
+		tabbedPane.setBackgroundAt(2, new Color(172, 213, 195));
 		textField.setColumns(10);
 		
 		JPanel Recommendation = new JPanel();
 		tabbedPane.addTab("Recommendation", null, Recommendation, null);
-		tabbedPane.setBackgroundAt(3, new Color(255, 153, 102));
+		tabbedPane.setBackgroundAt(3, new Color(139, 189, 187));
+		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
 		JPanel Exercise = new JPanel();
 		tabbedPane.addTab("Exercise", null, Exercise, null);
-		tabbedPane.setBackgroundAt(4, new Color(255, 102, 51));
+		tabbedPane.setBackgroundAt(4, new Color(114, 165, 178));
+		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
 		JPanel Info = new JPanel();
 		tabbedPane.addTab("Info", null, Info, null);
-		tabbedPane.setBackgroundAt(5, new Color(255, 51, 51));
+		tabbedPane.setBackgroundAt(5, new Color(102, 139, 164));
+		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
 		int valueOfProgressBar = frontPageController.setRandomValueOfProgressBar();
 		JProgressBar progressBar = new JProgressBar();
@@ -121,7 +130,9 @@ public class windows {
 		springLayout.putConstraint(SpringLayout.WEST, progressBar, 32, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, progressBar, -10, SpringLayout.SOUTH, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.EAST, progressBar, 392, SpringLayout.WEST, frame.getContentPane());
+		progressBar.setFont(new Font("Menlo", Font.PLAIN, 16));
 		frame.getContentPane().add(progressBar);
+		
 		
 		
 		
