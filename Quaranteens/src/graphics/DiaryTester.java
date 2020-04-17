@@ -7,4 +7,19 @@ import org.junit.jupiter.api.Test;
 
 public class DiaryTester {
 
+	void testAddDiaryEntry() {
+		
+	}
+	
+	void testSaveDiaryEntry() {
+		
+	}
+	
+	void testSearchDiaryEntry() {
+		
+	}
+	
+	void testDeleteDiaryEntry() {
+		
+	}
 }
