@@ -9,23 +9,9 @@ public class Diary {
 	private String contentOfEntry;
 	
 	
-	public Diary() {
-		
+	public Diary(Date dateCreated, String contentOfEntry) {
+		this.dateCreated = dateCreated;
+		this.contentOfEntry = contentOfEntry;
 	}
 	
-	public void addDiaryEntry() {
-		
-	}
-	
-	public void saveDiaryEntry() {
-		
-	}
-	
-	public void searchDiaryEntry() {
-		
-	}
-	
-	public void deleteDiaryEntry() {
-		
-	}
 }
