@@ -116,12 +116,12 @@ public class windows {
 		});
 		Diary.add(addEntry);
 		
-		JTextArea textArea = new JTextArea();
-		sl_Diary.putConstraint(SpringLayout.NORTH, textArea, 0, SpringLayout.NORTH, Diary);
-		sl_Diary.putConstraint(SpringLayout.SOUTH, textArea, 0, SpringLayout.SOUTH, Diary);
-		sl_Diary.putConstraint(SpringLayout.EAST, textArea, -10, SpringLayout.EAST, Diary);
-		textArea.setLineWrap(true);
-		Diary.add(textArea);
+		JTextArea contentOfDiary = new JTextArea();
+		sl_Diary.putConstraint(SpringLayout.NORTH, contentOfDiary, 0, SpringLayout.NORTH, Diary);
+		sl_Diary.putConstraint(SpringLayout.SOUTH, contentOfDiary, 0, SpringLayout.SOUTH, Diary);
+		sl_Diary.putConstraint(SpringLayout.EAST, contentOfDiary, -10, SpringLayout.EAST, Diary);
+		contentOfDiary.setLineWrap(true);
+		Diary.add(contentOfDiary);
 		
 		JButton removeEntry = new JButton("Remove");
 		sl_Diary.putConstraint(SpringLayout.NORTH, removeEntry, 1, SpringLayout.SOUTH, addEntry);
@@ -139,7 +139,7 @@ public class windows {
 		Diary.add(prevEntry);
 		
 		JButton nextEntry = new JButton("Next Entry");
-		sl_Diary.putConstraint(SpringLayout.WEST, textArea, 2, SpringLayout.EAST, nextEntry);
+		sl_Diary.putConstraint(SpringLayout.WEST, contentOfDiary, 2, SpringLayout.EAST, nextEntry);
 		sl_Diary.putConstraint(SpringLayout.SOUTH, nextEntry, 0, SpringLayout.SOUTH, Diary);
 		sl_Diary.putConstraint(SpringLayout.SOUTH, prevEntry, -6, SpringLayout.NORTH, nextEntry);
 		sl_Diary.putConstraint(SpringLayout.WEST, nextEntry, 0, SpringLayout.WEST, addEntry);
