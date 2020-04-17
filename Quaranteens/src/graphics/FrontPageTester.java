@@ -6,11 +6,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class frontPageTester {
+class FrontPageTester {
 
 	@Test
 	void testUpdateDayCounter() {
-		frontPage fp = new frontPage();
+		FrontPage fp = new FrontPage();
 		fp.updateDayCounter();
 		int dayCounter = 31;
 		double currentTime = System.currentTimeMillis(), nextTime;
@@ -25,7 +25,7 @@ class frontPageTester {
 	
 	@Test
 	void testGenerateTipOfTheDay() {
-		frontPage fp = new frontPage();
+		FrontPage fp = new FrontPage();
 		fp.readTipFromFile();
 		String tip = fp.generateTipOfTheDay();
 		System.out.println(tip);
@@ -34,7 +34,7 @@ class frontPageTester {
 	
 	@Test
 	void testSetRandomValueOfProgressBar() {
-		frontPage fp = new frontPage();
+		FrontPage fp = new FrontPage();
 		int value = fp.setRandomValueOfProgressBar();
 		if (value > 100) {
 			fail ("This value is too high");

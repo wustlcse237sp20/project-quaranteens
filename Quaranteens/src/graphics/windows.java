@@ -59,7 +59,7 @@ public class windows {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frontPage frontPageController = new frontPage();
+		FrontPage frontPageController = new FrontPage();
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(254, 255, 223));
