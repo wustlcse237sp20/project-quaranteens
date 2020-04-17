@@ -1,6 +1,7 @@
 package graphics;
 
 import java.util.Date;
+import java.io.FileWriter;
 
 public class Diary {
 	
