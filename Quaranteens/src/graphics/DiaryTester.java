@@ -15,7 +15,11 @@ public class DiaryTester {
 		
 	}
 	
-	void testSearchDiaryEntry() {
+	void testPrevDiaryEntry() {
+		
+	}
+	
+	void testNextDiaryEntry() {
 		
 	}
 	

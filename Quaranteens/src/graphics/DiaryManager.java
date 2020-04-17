@@ -10,7 +10,10 @@ public class DiaryManager {
 		
 	}
 	
-	public void searchDiaryEntry() {
+	public void prevDiaryEntry() {
+		
+	}
+	public void nextDiaryEntry() {
 		
 	}
 	
