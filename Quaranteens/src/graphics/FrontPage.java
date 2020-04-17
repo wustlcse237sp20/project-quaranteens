@@ -121,7 +121,6 @@ public class FrontPage {
 	}
 
 
-	
 	/*
 	 * updateDayCounter calculates the number of days since the user has started quarantine by subtracting the current time by the time the program was opened for the first time.
 	 * returns the numnber of days since quarantine
