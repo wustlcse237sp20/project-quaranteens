@@ -11,7 +11,7 @@ class frontPageTester {
 
 	@Test
 	void testUpdateDayCounter() {
-		frontPage fp = new frontPage();
+		FrontPage fp = new FrontPage();
 		fp.updateDayCounter();
 		@SuppressWarnings("deprecation")
 		Date openingDate = new Date(120, 2, 11);
@@ -29,7 +29,7 @@ class frontPageTester {
 	
 	@Test
 	void testGenerateTipOfTheDay() {
-		frontPage fp = new frontPage();
+		FrontPage fp = new FrontPage();
 		fp.readTipFromFile();
 		String tip = fp.generateTipOfTheDay();
 		System.out.println(tip);
@@ -38,7 +38,7 @@ class frontPageTester {
 	
 	@Test
 	void testSetRandomValueOfProgressBar() {
-		frontPage fp = new frontPage();
+		FrontPage fp = new FrontPage();
 		int value = fp.setRandomValueOfProgressBar();
 		if (value > 100) {
 			fail ("This value is too high");
