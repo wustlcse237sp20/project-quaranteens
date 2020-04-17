@@ -98,26 +98,23 @@ public class windows {
 		txtTipOfThe.setColumns(10);
 		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
-		JPanel Recommendation = new JPanel();
-		tabbedPane.addTab("Recommendation", null, Recommendation, null);
-		tabbedPane.setBackgroundAt(1, new Color(139, 189, 187));
-		
 		JPanel Diary = new JPanel();
 		tabbedPane.addTab("Diary", null, Diary, null);
 		SpringLayout sl_Diary = new SpringLayout();
 		Diary.setLayout(sl_Diary);
 		
-		JButton btnNewButton = new JButton("Add Entry");
-		springLayout.putConstraint(SpringLayout.NORTH, btnNewButton, 258, SpringLayout.SOUTH, Diary);
-		springLayout.putConstraint(SpringLayout.SOUTH, btnNewButton, -44, SpringLayout.SOUTH, Diary);
-		springLayout.putConstraint(SpringLayout.EAST, btnNewButton, -328, SpringLayout.EAST, Diary);
-		btnNewButton.setHorizontalAlignment(SwingConstants.RIGHT);
-		btnNewButton.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton addEntry = new JButton("Add Entry");
+		springLayout.putConstraint(SpringLayout.NORTH, addEntry, 258, SpringLayout.SOUTH, Diary);
+		springLayout.putConstraint(SpringLayout.SOUTH, addEntry, -44, SpringLayout.SOUTH, Diary);
+		springLayout.putConstraint(SpringLayout.EAST, addEntry, -328, SpringLayout.EAST, Diary);
+		addEntry.setHorizontalAlignment(SwingConstants.RIGHT);
+		addEntry.setVerticalAlignment(SwingConstants.BOTTOM);
+		addEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 			}
 		});
-		Diary.add(btnNewButton);
+		Diary.add(addEntry);
 		
 		JTextArea textArea = new JTextArea();
 		sl_Diary.putConstraint(SpringLayout.NORTH, textArea, 0, SpringLayout.NORTH, Diary);
@@ -126,27 +123,31 @@ public class windows {
 		textArea.setLineWrap(true);
 		Diary.add(textArea);
 		
-		JButton btnNewButton_1 = new JButton("Remove");
-		sl_Diary.putConstraint(SpringLayout.NORTH, btnNewButton_1, 1, SpringLayout.SOUTH, btnNewButton);
-		sl_Diary.putConstraint(SpringLayout.WEST, btnNewButton_1, 0, SpringLayout.WEST, btnNewButton);
-		sl_Diary.putConstraint(SpringLayout.SOUTH, btnNewButton_1, 24, SpringLayout.SOUTH, btnNewButton);
-		sl_Diary.putConstraint(SpringLayout.EAST, btnNewButton_1, 0, SpringLayout.EAST, btnNewButton);
-		Diary.add(btnNewButton_1);
+		JButton removeEntry = new JButton("Remove");
+		sl_Diary.putConstraint(SpringLayout.NORTH, removeEntry, 1, SpringLayout.SOUTH, addEntry);
+		sl_Diary.putConstraint(SpringLayout.WEST, removeEntry, 0, SpringLayout.WEST, addEntry);
+		sl_Diary.putConstraint(SpringLayout.SOUTH, removeEntry, 24, SpringLayout.SOUTH, addEntry);
+		sl_Diary.putConstraint(SpringLayout.EAST, removeEntry, 0, SpringLayout.EAST, addEntry);
+		Diary.add(removeEntry);
 		
-		JButton btnNewButton_2 = new JButton("Prev Entry");
-		sl_Diary.putConstraint(SpringLayout.WEST, btnNewButton_2, 0, SpringLayout.WEST, btnNewButton);
-		btnNewButton_2.addActionListener(new ActionListener() {
+		JButton prevEntry = new JButton("Prev Entry");
+		sl_Diary.putConstraint(SpringLayout.WEST, prevEntry, 0, SpringLayout.WEST, addEntry);
+		prevEntry.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
-		Diary.add(btnNewButton_2);
+		Diary.add(prevEntry);
 		
-		JButton btnNewButton_3 = new JButton("Next Entry");
-		sl_Diary.putConstraint(SpringLayout.WEST, textArea, 2, SpringLayout.EAST, btnNewButton_3);
-		sl_Diary.putConstraint(SpringLayout.SOUTH, btnNewButton_3, 0, SpringLayout.SOUTH, Diary);
-		sl_Diary.putConstraint(SpringLayout.SOUTH, btnNewButton_2, -6, SpringLayout.NORTH, btnNewButton_3);
-		sl_Diary.putConstraint(SpringLayout.WEST, btnNewButton_3, 0, SpringLayout.WEST, btnNewButton);
-		Diary.add(btnNewButton_3);
+		JButton nextEntry = new JButton("Next Entry");
+		sl_Diary.putConstraint(SpringLayout.WEST, textArea, 2, SpringLayout.EAST, nextEntry);
+		sl_Diary.putConstraint(SpringLayout.SOUTH, nextEntry, 0, SpringLayout.SOUTH, Diary);
+		sl_Diary.putConstraint(SpringLayout.SOUTH, prevEntry, -6, SpringLayout.NORTH, nextEntry);
+		sl_Diary.putConstraint(SpringLayout.WEST, nextEntry, 0, SpringLayout.WEST, addEntry);
+		Diary.add(nextEntry);
+		
+		JPanel Recommendation = new JPanel();
+		tabbedPane.addTab("Recommendation", null, Recommendation, null);
+		tabbedPane.setBackgroundAt(2, new Color(139, 189, 187));
 		
 		textField = new JTextField();
 		tabbedPane.addTab("Checklist", null, textField, null);
