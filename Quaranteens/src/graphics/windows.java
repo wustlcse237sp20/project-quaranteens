@@ -28,7 +28,8 @@ public class windows {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField txtTipOfThe;
+	private JTextField txtTipOfTheDay;
+	private JTextArea recOfTheDay;
 
 	/**
 	 * Launch the application.
@@ -60,6 +61,7 @@ public class windows {
 	 */
 	private void initialize() {
 		frontPage frontPageController = new frontPage();
+		recommendationsController recPageController = new recommendationsController();
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(255, 255, 204));
@@ -81,16 +83,16 @@ public class windows {
 		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 0, SpringLayout.EAST, lblNewLabel);
 		frame.getContentPane().add(tabbedPane);
 		
-		txtTipOfThe = new JTextField();
-		txtTipOfThe.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtTipOfTheDay = new JTextField();
+		txtTipOfTheDay.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		frontPageController.readTipFromFile();
 		String tip = frontPageController.generateTipOfTheDay();
-		txtTipOfThe.setHorizontalAlignment(SwingConstants.CENTER);
-		txtTipOfThe.setEditable(false);
-		txtTipOfThe.setText("Tip of the day: " + tip);
-		tabbedPane.addTab("Tip", null, txtTipOfThe, null);
+		txtTipOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
+		txtTipOfTheDay.setEditable(false);
+		txtTipOfTheDay.setText("Tip of the day: " + tip);
+		tabbedPane.addTab("Tip", null, txtTipOfTheDay, null);
 		tabbedPane.setBackgroundAt(0, new Color(255, 153, 255));
-		txtTipOfThe.setColumns(10);
+		txtTipOfTheDay.setColumns(10);
 		
 		JTextArea txtrDiary = new JTextArea();
 		txtrDiary.setLineWrap(true);
@@ -102,9 +104,22 @@ public class windows {
 		tabbedPane.setBackgroundAt(2, new Color(255, 153, 153));
 		textField.setColumns(10);
 		
-		JPanel Recommendation = new JPanel();
-		tabbedPane.addTab("Recommendation", null, Recommendation, null);
+		recOfTheDay = new JTextArea();
+		recOfTheDay.setEditable(false);
+		recOfTheDay.setLineWrap(true);
+//		recOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
+		tabbedPane.addTab("Recommendation", null, recOfTheDay, null);
 		tabbedPane.setBackgroundAt(3, new Color(255, 153, 102));
+		recPageController.readMovieRecFromFile();
+		String movie = recPageController.generateMovieRec();
+		recPageController.readBookRecFromFile();
+		String book = recPageController.generateBookRec();
+		recPageController.readMusicRecFromFile();
+		String music = recPageController.generateMusicRec();
+		String allRecs = "Movie of the day: " + movie + "\n \n" + 
+				"Book of the day: " + book + "\n \n" +
+				"Album of the day: " + music;
+		recOfTheDay.setText(allRecs);
 		
 		JPanel Exercise = new JPanel();
 		tabbedPane.addTab("Exercise", null, Exercise, null);
