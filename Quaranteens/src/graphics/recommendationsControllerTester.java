@@ -49,7 +49,7 @@ class recommendationsControllerTester {
 	@Test
 	void testGenerateMusicRecs() {
 		recommendationsController rc = new recommendationsController();
-		rc.readBookRecFromFile();
+		rc.readMusicRecFromFile();
 		String tip = rc.generateMusicRec();
 		System.out.println(tip);
 		assertEquals(String.class, tip.getClass());
