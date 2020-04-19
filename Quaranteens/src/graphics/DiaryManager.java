@@ -17,6 +17,38 @@ public class DiaryManager {
 		this.indexOfPrevEntry = 0;
 	}
 	
+	public String getPath() {
+		return this.path;
+	}
+	
+	public ArrayList<Diary> getListOfEntries() {
+		return this.listOfEntries;
+	}
+	
+	public int getIndexOfDiaryEntry() {
+		return this.indexOfDiaryEntry;
+	}
+	
+	public int getIndexOfPrevEntry() {
+		return this.indexOfPrevEntry;
+	}
+	
+	public void setPath(String path) {
+		this.path = path;
+	}
+	
+	public void setListOfEntries(ArrayList<Diary> listOfEntries) {
+		this.listOfEntries = listOfEntries;
+	}
+	
+	public void setIndexOfDiaryEntry(int indexOfDiaryEntry) {
+		this.indexOfDiaryEntry = indexOfDiaryEntry;
+	}
+	
+	public void setIndexOfPrevEntry(int indexOfPrevEntry) {
+		this.indexOfPrevEntry = indexOfPrevEntry;
+	}
+	
 	
 	public void addDiaryEntry(Diary entryToSave) {
 		this.listOfEntries.add(entryToSave);
@@ -36,7 +68,7 @@ public class DiaryManager {
 		if (index < 0) {
 			index = 0;
 		}
-		this.indexOfPrevEntry = index;
+		this.setIndexOfPrevEntry(index);
 		return this.listOfEntries.get(index);
 	}
 	
