@@ -3,6 +3,8 @@ package graphics;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.Date;
 
 import org.junit.jupiter.api.Test;
 
@@ -12,16 +14,17 @@ class frontPageTester {
 	void testUpdateDayCounter() {
 		frontPage fp = new frontPage();
 		fp.updateDayCounter();
-		int dayCounter = 31;
-		double currentTime = System.currentTimeMillis(), nextTime;
-			if ((nextTime = System.currentTimeMillis()) - currentTime >= 1000*60*60*24) {
-				dayCounter = dayCounter + 1;
-			}
-			currentTime = nextTime;
-		assertEquals (dayCounter, fp.counterOfTheDay);
+		Date openingDate = new Date(120, 2, 11);
+		long currentTimeInMillis = System.currentTimeMillis();
+		long millisSinceProgramStarted = currentTimeInMillis - openingDate.getTime();
+		long millisToSeconds = millisSinceProgramStarted / 1000;
+		long secondsToMinutes = millisToSeconds / 60;
+		long minutesToHours = secondsToMinutes / 60;
+		int hoursToDays = (int)minutesToHours / 24;
+		int numOfDaysSinceProgramStarted = hoursToDays;
+		assertEquals (numOfDaysSinceProgramStarted, fp.counterOfTheDay);
 
 	}
-	
 	
 	@Test
 	void testGenerateTipOfTheDay() {
@@ -30,6 +33,14 @@ class frontPageTester {
 		String tip = fp.generateTipOfTheDay();
 		System.out.println(tip);
 		assertEquals(String.class, tip.getClass());
+	}
+	
+	
+	@Test
+	void testReadTipOfTheDay() {
+		frontPage fp = new frontPage();
+		fp.readTipFromFile();
+		assertFalse (fp.listOfTips.isEmpty());
 	}
 	
 	@Test
