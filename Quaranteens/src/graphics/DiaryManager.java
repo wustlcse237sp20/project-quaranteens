@@ -6,14 +6,16 @@ import java.io.IOException;
 
 public class DiaryManager {
 	
-	private String path = "src/docs.DiaryEntries/sample.txt";
+	private String path = "src/docs.DiaryEntries/diaryEntry";
 	
 	
 	public void writeToFile() {
 		
-		File diaryEntries = new File(path);
+		
 		try {
-			FileWriter writingDiaryEntries = new FileWriter(diaryEntries, true);
+			File diaryEntries = new File("allDiaryEntries");
+			diaryEntries.createNewFile();
+			FileWriter writingDiaryEntries = new FileWriter(diaryEntries, false);
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
