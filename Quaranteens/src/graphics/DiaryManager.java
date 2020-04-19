@@ -17,7 +17,10 @@ public class DiaryManager {
 		this.indexOfPrevEntry = 0;
 	}
 	
-	
+	public int setIndexOfDiary(int indexOfDiary) {
+		this.indexOfDiaryEntry = indexOfDiary;
+		return this.indexOfDiaryEntry;
+	}
 	public void addDiaryEntry(Diary entryToSave) {
 		this.listOfEntries.add(entryToSave);
 		this.indexOfDiaryEntry = this.indexOfDiaryEntry + 1;
