@@ -13,6 +13,7 @@ class recommendationsControllerTester {
 		assertFalse(rc.listOfMovies.isEmpty());
 	}
 	
+	@Test
 	void testGenerateMovieRecs() {
 		recommendationsController rc = new recommendationsController();
 		rc.readMovieRecFromFile();
@@ -20,12 +21,15 @@ class recommendationsControllerTester {
 		System.out.println(tip);
 		assertEquals(String.class, tip.getClass());
 	}
+	
+	@Test
 	void testReadBookRecs() {
 		recommendationsController rc = new recommendationsController();
 		rc.readBookRecFromFile();
 		assertFalse(rc.listOfBooks.isEmpty());
 	}
 	
+	@Test
 	void testGenerateBooksRecs() {
 		recommendationsController rc = new recommendationsController();
 		rc.readBookRecFromFile();
@@ -34,12 +38,15 @@ class recommendationsControllerTester {
 		assertEquals(String.class, tip.getClass());
 	}
 	
+	
+	@Test
 	void testReadMusicRecs() {
 		recommendationsController rc = new recommendationsController();
 		rc.readMusicRecFromFile();
 		assertFalse(rc.listOfMusic.isEmpty());
 	}
 	
+	@Test
 	void testGenerateMusicRecs() {
 		recommendationsController rc = new recommendationsController();
 		rc.readBookRecFromFile();
