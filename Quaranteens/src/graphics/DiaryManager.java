@@ -63,10 +63,19 @@ public class DiaryManager {
 	
 	public Diary prevDiaryEntry() {
 		int index = this.indexOfDiaryEntry;
-		index = index - 2;
+		if (index == this.listOfEntries.size()) {
+			index = index - 2;
+		}
+		else {
+			
+		index = index - 1;
+		
+		}
+		
 		if (index < 0) {
 			index = 0;
 		}
+		
 		this.setIndexOfPrevEntry(index);
 		return this.listOfEntries.get(index);
 	}

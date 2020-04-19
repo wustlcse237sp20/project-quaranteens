@@ -37,7 +37,8 @@ public class DiaryTester {
 		dm.addDiaryEntry(diary4);
 		dm.addDiaryEntry(diary5);
 		assertEquals(dm.listOfEntries.get(3), dm.prevDiaryEntry());
-		
+		dm.setIndexOfDiaryEntry(2);
+		assertEquals(dm.listOfEntries.get(1), dm.prevDiaryEntry());
 	}
 	
     @Test
@@ -54,9 +55,11 @@ public class DiaryTester {
 		dm.addDiaryEntry(diary3);
 		dm.addDiaryEntry(diary4);
 		dm.addDiaryEntry(diary5);
-		dm.prevDiaryEntry();
-		System.out.println(diary4);
+		dm.setIndexOfDiaryEntry(3);
+		System.out.println(diary3);
+		System.out.println(dm.prevDiaryEntry());
 		System.out.println(dm.nextDiaryEntry());
+		assertEquals(dm.listOfEntries.get(4), dm.nextDiaryEntry());
 	}
 	
     @Test
