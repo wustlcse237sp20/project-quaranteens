@@ -1,8 +1,9 @@
 package graphics;
 
 import java.util.Date;
-
+import java.io.File;
 import java.io.FileWriter;
+import java.io.IOException;
 
 public class Diary {
 	
@@ -29,6 +30,18 @@ public class Diary {
 	
 	public void setContentOfEntry(String contentOfEntry) {
 		this.contentOfEntry = contentOfEntry;
+	}
+	
+public void writeToFile() {
+		
+		try {
+			File diaryEntries = new File("allDiaryEntries");
+			diaryEntries.createNewFile();
+			FileWriter writingDiaryEntries = new FileWriter(diaryEntries, false);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 }
