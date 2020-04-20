@@ -59,7 +59,7 @@ public class windows {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frontPage frontPageController = new frontPage();
+		FrontPage frontPageController = new FrontPage();
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(254, 255, 223));
@@ -96,21 +96,63 @@ public class windows {
 		tabbedPane.addTab("Tip", null, txtTipOfThe, null);
 		tabbedPane.setBackgroundAt(0, new Color(254, 255, 223));
 		txtTipOfThe.setColumns(10);
-		
-		JTextArea txtrDiary = new JTextArea();
-		txtrDiary.setLineWrap(true);
-		tabbedPane.addTab("Diary", null, txtrDiary, null);
-		tabbedPane.setBackgroundAt(1, new Color(212, 234, 206));
 		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
-		textField = new JTextField();
-		tabbedPane.addTab("Checklist", null, textField, null);
-		tabbedPane.setBackgroundAt(2, new Color(172, 213, 195));
-		textField.setColumns(10);
+		JPanel Diary = new JPanel();
+		tabbedPane.addTab("Diary", null, Diary, null);
+		SpringLayout sl_Diary = new SpringLayout();
+		Diary.setLayout(sl_Diary);
+		
+		JButton addEntry = new JButton("Add Entry");
+		springLayout.putConstraint(SpringLayout.NORTH, addEntry, 258, SpringLayout.SOUTH, Diary);
+		springLayout.putConstraint(SpringLayout.SOUTH, addEntry, -44, SpringLayout.SOUTH, Diary);
+		springLayout.putConstraint(SpringLayout.EAST, addEntry, -328, SpringLayout.EAST, Diary);
+		addEntry.setHorizontalAlignment(SwingConstants.RIGHT);
+		addEntry.setVerticalAlignment(SwingConstants.BOTTOM);
+		addEntry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			}
+		});
+		Diary.add(addEntry);
+		
+		JTextArea contentOfDiary = new JTextArea();
+		sl_Diary.putConstraint(SpringLayout.NORTH, contentOfDiary, 0, SpringLayout.NORTH, Diary);
+		sl_Diary.putConstraint(SpringLayout.SOUTH, contentOfDiary, 0, SpringLayout.SOUTH, Diary);
+		sl_Diary.putConstraint(SpringLayout.EAST, contentOfDiary, -10, SpringLayout.EAST, Diary);
+		contentOfDiary.setLineWrap(true);
+		Diary.add(contentOfDiary);
+		
+		JButton removeEntry = new JButton("Remove");
+		sl_Diary.putConstraint(SpringLayout.NORTH, removeEntry, 1, SpringLayout.SOUTH, addEntry);
+		sl_Diary.putConstraint(SpringLayout.WEST, removeEntry, 0, SpringLayout.WEST, addEntry);
+		sl_Diary.putConstraint(SpringLayout.SOUTH, removeEntry, 24, SpringLayout.SOUTH, addEntry);
+		sl_Diary.putConstraint(SpringLayout.EAST, removeEntry, 0, SpringLayout.EAST, addEntry);
+		Diary.add(removeEntry);
+		
+		JButton prevEntry = new JButton("Prev Entry");
+		sl_Diary.putConstraint(SpringLayout.WEST, prevEntry, 0, SpringLayout.WEST, addEntry);
+		prevEntry.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		Diary.add(prevEntry);
+		
+		JButton nextEntry = new JButton("Next Entry");
+		sl_Diary.putConstraint(SpringLayout.WEST, contentOfDiary, 2, SpringLayout.EAST, nextEntry);
+		sl_Diary.putConstraint(SpringLayout.SOUTH, nextEntry, 0, SpringLayout.SOUTH, Diary);
+		sl_Diary.putConstraint(SpringLayout.SOUTH, prevEntry, -6, SpringLayout.NORTH, nextEntry);
+		sl_Diary.putConstraint(SpringLayout.WEST, nextEntry, 0, SpringLayout.WEST, addEntry);
+		Diary.add(nextEntry);
 		
 		JPanel Recommendation = new JPanel();
 		tabbedPane.addTab("Recommendation", null, Recommendation, null);
-		tabbedPane.setBackgroundAt(3, new Color(139, 189, 187));
+		tabbedPane.setBackgroundAt(2, new Color(139, 189, 187));
+		
+		textField = new JTextField();
+		tabbedPane.addTab("Checklist", null, textField, null);
+		tabbedPane.setBackgroundAt(3, new Color(172, 213, 195));
+		textField.setColumns(10);
 		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
 		JPanel Exercise = new JPanel();

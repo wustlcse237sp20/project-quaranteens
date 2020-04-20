@@ -12,7 +12,7 @@ import java.io.PrintWriter;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
-public class frontPage {
+public class FrontPage {
 
 	private String tipOfTheDay;
 	private String movieOfTheDay;
@@ -27,7 +27,7 @@ public class frontPage {
 	public Date currentDate = new Date();
 	
 	
-	public frontPage() {
+	public FrontPage() {
 		this.progressBarPercentage = 0;
 		this.counterOfTheDay = 0;
 		this.tipOfTheDay = "";
@@ -121,7 +121,6 @@ public class frontPage {
 	}
 
 
-	
 	/*
 	 * updateDayCounter calculates the number of days since the user has started quarantine by subtracting the current time by the time the program was opened for the first time.
 	 * returns the numnber of days since quarantine
