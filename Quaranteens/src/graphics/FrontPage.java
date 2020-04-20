@@ -115,4 +115,5 @@ public class FrontPage {
 		this.progressBarPercentage = value;
 		return this.progressBarPercentage;
 	}
+	
 }
