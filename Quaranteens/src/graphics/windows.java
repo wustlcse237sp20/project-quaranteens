@@ -50,6 +50,7 @@ public class windows {
 	/**
 	 * Create the application.
 	 */
+	
 	public windows() {
 		initialize();
 	}
