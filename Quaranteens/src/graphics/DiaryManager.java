@@ -87,6 +87,9 @@ public class DiaryManager {
 			index = index + 2;
 			nextEntry = this.listOfEntries.get(index);
 		}
+		else {
+			return nextEntry;
+		}
 		return nextEntry;
 	}
 	
