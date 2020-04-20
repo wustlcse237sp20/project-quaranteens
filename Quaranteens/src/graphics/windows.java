@@ -28,7 +28,8 @@ public class windows {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextArea txtTipOfThe;
+	private JTextField txtTipOfTheDay;
+	private JTextArea recOfTheDay;
 
 	/**
 	 * Launch the application.

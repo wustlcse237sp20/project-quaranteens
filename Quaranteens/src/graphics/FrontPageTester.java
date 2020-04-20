@@ -3,6 +3,7 @@ package graphics;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 import org.junit.jupiter.api.Test;
@@ -11,7 +12,7 @@ class frontPageTester {
 
 	@Test
 	void testUpdateDayCounter() {
-		FrontPage fp = new FrontPage();
+		frontPage fp = new FrontPage();
 		fp.updateDayCounter();
 		@SuppressWarnings("deprecation")
 		Date openingDate = new Date(120, 2, 11);
@@ -23,7 +24,6 @@ class frontPageTester {
 		int hoursToDays = (int)minutesToHours / 24;
 		int numOfDaysSinceProgramStarted = hoursToDays;
 		assertEquals (numOfDaysSinceProgramStarted, fp.counterOfTheDay);
-
 	}
 	
 	
@@ -34,6 +34,14 @@ class frontPageTester {
 		String tip = fp.generateTipOfTheDay();
 		System.out.println(tip);
 		assertEquals(String.class, tip.getClass());
+	}
+	
+	
+	@Test
+	void testReadTipOfTheDay() {
+		frontPage fp = new frontPage();
+		fp.readTipFromFile();
+		assertFalse (fp.listOfTips.isEmpty());
 	}
 	
 	@Test
