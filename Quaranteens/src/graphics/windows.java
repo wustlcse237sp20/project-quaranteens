@@ -91,7 +91,7 @@ public class windows {
 		txtTipOfTheDay.setEditable(false);
 		txtTipOfTheDay.setText("Tip of the day: " + tip);
 		tabbedPane.addTab("Tip", null, txtTipOfTheDay, null);
-		tabbedPane.setBackgroundAt(0, new Color(255, 153, 200));
+		tabbedPane.setBackgroundAt(0, new Color(255, 153, 220));
 		txtTipOfTheDay.setColumns(10);
 		
 		JTextArea txtrDiary = new JTextArea();
