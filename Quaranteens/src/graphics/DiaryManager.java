@@ -82,15 +82,12 @@ public class DiaryManager {
 	
 	public Diary nextDiaryEntry() {
 		Diary nextEntry = this.listOfEntries.get(this.indexOfDiaryEntry);
-		if (this.indexOfPrevEntry >= this.indexOfDiaryEntry) {
-		}
-		else {
+		if (this.indexOfPrevEntry < this.indexOfDiaryEntry) {
 			int index = this.indexOfPrevEntry;
 			index = index + 2;
 			nextEntry = this.listOfEntries.get(index);
-			return nextEntry;
 		}
-		return null;
+		return nextEntry;
 	}
 	
 	public void deleteDiaryEntry(Diary entryToRemove) {
