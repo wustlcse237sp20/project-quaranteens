@@ -93,14 +93,6 @@ public class windows {
 		tabbedPane.setBackgroundAt(0, new Color(255, 153, 255));
 		txtTipOfTheDay.setColumns(10);
 		
-		recOfTheDay = new JTextArea();
-		recOfTheDay.setEditable(false);
-		recOfTheDay.setLineWrap(true);
-		//		recOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
-				tabbedPane.addTab("Recommendation", null, recOfTheDay, null);
-				tabbedPane.setBackgroundAt(1, new Color(255, 153, 102));
-				recOfTheDay.setText(allRecs);
-		
 		JPanel diaryPanelTab = new JPanel();
 		diaryPanelTab.setToolTipText("");
 		tabbedPane.addTab("Diary", null, diaryPanelTab, null);
@@ -156,7 +148,7 @@ public class windows {
 		
 		textField = new JTextField();
 		tabbedPane.addTab("Checklist", null, textField, null);
-		tabbedPane.setBackgroundAt(3, new Color(255, 153, 153));
+		tabbedPane.setBackgroundAt(2, new Color(255, 153, 153));
 		textField.setColumns(10);
 		recPageController.readMovieRecFromFile();
 		String movie = recPageController.generateMovieRec();
@@ -167,6 +159,14 @@ public class windows {
 		String allRecs = "Movie of the day: " + movie + "\n \n" + 
 				"Book of the day: " + book + "\n \n" +
 				"Album of the day: " + music;
+		
+		recOfTheDay = new JTextArea();
+		recOfTheDay.setEditable(false);
+		recOfTheDay.setLineWrap(true);
+		//		recOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
+				tabbedPane.addTab("Recommendation", null, recOfTheDay, null);
+				tabbedPane.setBackgroundAt(3, new Color(255, 153, 102));
+				recOfTheDay.setText(allRecs);
 		
 		JPanel Exercise = new JPanel();
 		tabbedPane.addTab("Exercise", null, Exercise, null);
