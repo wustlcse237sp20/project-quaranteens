@@ -1,5 +1,25 @@
 # cse237-project
+--------------------------------------ITERATION 2--------------------------------------
+WHAT WAS COMPLETED:
+- Issues in Iteration 1:
+	- Fixed JUnit Tests for FrontPage
+	- Finished up Progress Bar
+	- Program now reads and generate's tip from a .txt file
+	- Created new branches to be organized by feature
+- Added a Recommendations page, which generates a random book/music/movie recommendation per day
+- Created UI for the Diary page and methods
+- Added JUnit testing for both Recommendation and Diary tabs
 
+WHAT WE INTEND TO COMPLETE NEXT ITERATION:
+- Finish Diary so that it works
+- Maybe a Checklist???
+
+THINGS THAT ARE IMPLEMENTED BUT DON'T NECESSARILY WORK:
+- There is a bash script, but right now running it does not run the program properly
+- The Diary does not save/remove/navigate entries yet
+
+
+--------------------------------------ITERATION 1--------------------------------------
 WHAT WAS COMPLETED:
 
 - Tab functionality (user can switch between the tabs)
