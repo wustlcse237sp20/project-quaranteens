@@ -85,18 +85,18 @@ public class windows {
 		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		frame.getContentPane().add(tabbedPane);
 		
-		txtTipOfThe = new JTextArea();
-		txtTipOfThe.setFont(new Font("Menlo", Font.PLAIN, 16));
+		txtTipOfTheDay = new JTextArea();
+		txtTipOfTheDay.setFont(new Font("Menlo", Font.PLAIN, 16));
 		frontPageController.readTipFromFile();
 		String tip = frontPageController.generateTipOfTheDay();
 //		txtTipOfThe.orientation(SwingConstants.CENTER);
-		txtTipOfThe.setEditable(false);
-		txtTipOfThe.setText("Tip of the day: " + tip);
-		txtTipOfThe.setLineWrap(true);
-		txtTipOfThe.setWrapStyleWord(true);
-		tabbedPane.addTab("Tip", null, txtTipOfThe, null);
+		txtTipOfTheDay.setEditable(false);
+		txtTipOfTheDay.setText("Tip of the day: " + tip);
+		txtTipOfTheDay.setLineWrap(true);
+		txtTipOfTheDay.setWrapStyleWord(true);
+		tabbedPane.addTab("Tip", null, txtTipOfTheDay, null);
 		tabbedPane.setBackgroundAt(0, new Color(254, 255, 223));
-		txtTipOfThe.setColumns(10);
+		txtTipOfTheDay.setColumns(10);
 		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
 		JPanel Diary = new JPanel();
