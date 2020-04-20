@@ -53,7 +53,6 @@ public class windows {
 	public windows() {
 		initialize();
 	}
-	
 	/**
 	 * 
 	 * Initialize the contents of the frame.
