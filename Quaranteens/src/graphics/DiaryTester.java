@@ -56,10 +56,11 @@ public class DiaryTester {
 		dm.addDiaryEntry(diary4);
 		dm.addDiaryEntry(diary5);
 		dm.setIndexOfDiaryEntry(3);
-		System.out.println(diary3);
-		System.out.println(dm.prevDiaryEntry());
-		System.out.println(dm.nextDiaryEntry());
+		dm.setIndexOfPrevEntry(2);
 		assertEquals(dm.listOfEntries.get(4), dm.nextDiaryEntry());
+		dm.setIndexOfDiaryEntry(1);
+		dm.setIndexOfPrevEntry(0);
+		assertEquals(dm.listOfEntries.get(2), dm.nextDiaryEntry());
 	}
 	
     @Test
