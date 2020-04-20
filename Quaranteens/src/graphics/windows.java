@@ -28,7 +28,7 @@ public class windows {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField txtTipOfTheDay;
+	private JTextArea txtTipOfTheDay;
 	private JTextArea recOfTheDay;
 
 	/**
@@ -63,52 +63,100 @@ public class windows {
 		recommendationsController recPageController = new recommendationsController();
 		
 		frame = new JFrame();
-		frame.getContentPane().setBackground(new Color(255, 255, 204));
+		frame.getContentPane().setBackground(new Color(254, 255, 223));
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
 		int daysSinceQuarantine = frontPageController.updateDayCounter();
 		SpringLayout springLayout = new SpringLayout();
 		frame.getContentPane().setLayout(springLayout);
-		JLabel lblNewLabel = new JLabel("Day " + daysSinceQuarantine );
-		springLayout.putConstraint(SpringLayout.NORTH, lblNewLabel, 10, SpringLayout.NORTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, lblNewLabel, -10, SpringLayout.EAST, frame.getContentPane());
-		frame.getContentPane().add(lblNewLabel);
+		JLabel counterLabel = new JLabel("Day " + daysSinceQuarantine );
+		counterLabel.setFont(new Font("Menlo", Font.PLAIN, 16));
+		springLayout.putConstraint(SpringLayout.NORTH, counterLabel, 10, SpringLayout.NORTH, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, counterLabel, -10, SpringLayout.EAST, frame.getContentPane());
+		frame.getContentPane().add(counterLabel);
 		
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 3, SpringLayout.SOUTH, lblNewLabel);
+		tabbedPane.setFont(new Font("Menlo", Font.PLAIN, 16));
+		springLayout.putConstraint(SpringLayout.NORTH, tabbedPane, 3, SpringLayout.SOUTH, counterLabel);
 		springLayout.putConstraint(SpringLayout.WEST, tabbedPane, 10, SpringLayout.WEST, frame.getContentPane());
 		springLayout.putConstraint(SpringLayout.SOUTH, tabbedPane, -45, SpringLayout.SOUTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 0, SpringLayout.EAST, lblNewLabel);
+		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 0, SpringLayout.EAST, counterLabel);
 		frame.getContentPane().add(tabbedPane);
 		
-		txtTipOfTheDay = new JTextField();
-		txtTipOfTheDay.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		txtTipOfTheDay = new JTextArea();
+		txtTipOfTheDay.setFont(new Font("Menlo", Font.PLAIN, 16));
+		txtTipOfTheDay.setLineWrap(true);
 		frontPageController.readTipFromFile();
 		String tip = frontPageController.generateTipOfTheDay();
-		txtTipOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
+//		txtTipOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTipOfTheDay.setEditable(false);
 		txtTipOfTheDay.setText("Tip of the day: " + tip);
 		tabbedPane.addTab("Tip", null, txtTipOfTheDay, null);
-		tabbedPane.setBackgroundAt(0, new Color(255, 153, 255));
+		tabbedPane.setBackgroundAt(0, new Color(254, 255, 234));
 		txtTipOfTheDay.setColumns(10);
 		
-		JTextArea txtrDiary = new JTextArea();
-		txtrDiary.setLineWrap(true);
-		tabbedPane.addTab("Diary", null, txtrDiary, null);
-		tabbedPane.setBackgroundAt(1, new Color(255, 153, 204));
+		JPanel diaryPanelTab = new JPanel();
+		diaryPanelTab.setToolTipText("");
+		diaryPanelTab.setFont(new Font("Menlo", Font.PLAIN, 16));
+		tabbedPane.addTab("Diary", null, diaryPanelTab, null);
+		tabbedPane.setBackgroundAt(0, new Color(212, 234, 206));
+		SpringLayout sl_diaryPanelTab = new SpringLayout();
+		diaryPanelTab.setLayout(sl_diaryPanelTab);
+		
+		JButton addEntryButton = new JButton("Add Entry");
+		addEntryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		diaryPanelTab.add(addEntryButton);
+		
+		JButton deleteEntryButton = new JButton("Delete");
+		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, deleteEntryButton, 29, SpringLayout.NORTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, addEntryButton, -29, SpringLayout.NORTH, deleteEntryButton);
+		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, addEntryButton, -81, SpringLayout.EAST, deleteEntryButton);
+		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, addEntryButton, -6, SpringLayout.NORTH, deleteEntryButton);
+		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, addEntryButton, 0, SpringLayout.EAST, deleteEntryButton);
+		deleteEntryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, deleteEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, deleteEntryButton, 81, SpringLayout.WEST, diaryPanelTab);
+		diaryPanelTab.add(deleteEntryButton);
+		
+		JButton prevEntryButton = new JButton("Prev");
+		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, prevEntryButton, 99, SpringLayout.NORTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, deleteEntryButton, -47, SpringLayout.NORTH, prevEntryButton);
+		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, prevEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, prevEntryButton, -320, SpringLayout.EAST, diaryPanelTab);
+		prevEntryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		diaryPanelTab.add(prevEntryButton);
+		
+		JButton nextEntryButton = new JButton("Next");
+		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, nextEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, prevEntryButton, -6, SpringLayout.NORTH, nextEntryButton);
+		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, nextEntryButton, 135, SpringLayout.NORTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, nextEntryButton, 0, SpringLayout.SOUTH, diaryPanelTab);
+		diaryPanelTab.add(nextEntryButton);
+		
+		JTextArea contentOfDiaryEntry = new JTextArea();
+		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, nextEntryButton, -1, SpringLayout.WEST, contentOfDiaryEntry);
+		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, contentOfDiaryEntry, 0, SpringLayout.NORTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, contentOfDiaryEntry, 90, SpringLayout.WEST, prevEntryButton);
+		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, contentOfDiaryEntry, 0, SpringLayout.SOUTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, contentOfDiaryEntry, 0, SpringLayout.EAST, diaryPanelTab);
+		diaryPanelTab.add(contentOfDiaryEntry);
 		
 		textField = new JTextField();
 		tabbedPane.addTab("Checklist", null, textField, null);
-		tabbedPane.setBackgroundAt(2, new Color(255, 153, 153));
+		tabbedPane.setBackgroundAt(2, new Color(172, 213, 195));
+		textField.setFont(new Font("Menlo", Font.PLAIN, 16));
 		textField.setColumns(10);
-		
-		recOfTheDay = new JTextArea();
-		recOfTheDay.setEditable(false);
-		recOfTheDay.setLineWrap(true);
-//		recOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
-		tabbedPane.addTab("Recommendation", null, recOfTheDay, null);
-		tabbedPane.setBackgroundAt(3, new Color(255, 153, 102));
 		recPageController.readMovieRecFromFile();
 		String movie = recPageController.generateMovieRec();
 		recPageController.readBookRecFromFile();
@@ -118,18 +166,29 @@ public class windows {
 		String allRecs = "Movie of the day: " + movie + "\n \n" + 
 				"Book of the day: " + book + "\n \n" +
 				"Album of the day: " + music;
-		recOfTheDay.setText(allRecs);
+		
+		recOfTheDay = new JTextArea();
+		recOfTheDay.setFont(new Font("Menlo", Font.PLAIN, 16));
+		recOfTheDay.setEditable(false);
+		recOfTheDay.setLineWrap(true);
+		//		recOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
+				tabbedPane.addTab("Recommendation", null, recOfTheDay, null);
+				tabbedPane.setBackgroundAt(3, new Color(139, 189, 187));
+				recOfTheDay.setText(allRecs);
 		
 		JPanel Exercise = new JPanel();
 		tabbedPane.addTab("Exercise", null, Exercise, null);
-		tabbedPane.setBackgroundAt(4, new Color(255, 102, 51));
+		Exercise.setFont(new Font("Menlo", Font.PLAIN, 16));
+		tabbedPane.setBackgroundAt(4, new Color(114, 165, 178));
 		
 		JPanel Info = new JPanel();
+		Info.setFont(new Font("Menlo", Font.PLAIN, 16));
 		tabbedPane.addTab("Info", null, Info, null);
-		tabbedPane.setBackgroundAt(5, new Color(255, 51, 51));
+		tabbedPane.setBackgroundAt(5, new Color(102, 139, 164));
 		
 		int valueOfProgressBar = frontPageController.setRandomValueOfProgressBar();
 		JProgressBar progressBar = new JProgressBar();
+		progressBar.setFont(new Font("Menlo", Font.PLAIN, 16));
 		progressBar.setStringPainted(true);
 		progressBar.setValue(valueOfProgressBar);
 		springLayout.putConstraint(SpringLayout.WEST, progressBar, 32, SpringLayout.WEST, frame.getContentPane());
