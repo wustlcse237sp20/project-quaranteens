@@ -28,7 +28,7 @@ public class windows {
 
 	private JFrame frame;
 	private JTextField textField;
-	private JTextField txtTipOfTheDay;
+	private JTextArea txtTipOfTheDay;
 	private JTextArea recOfTheDay;
 
 	/**
