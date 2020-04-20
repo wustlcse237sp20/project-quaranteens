@@ -12,7 +12,7 @@ class frontPageTester {
 
 	@Test
 	void testUpdateDayCounter() {
-		frontPage fp = new FrontPage();
+		FrontPage fp = new FrontPage();
 		fp.updateDayCounter();
 		@SuppressWarnings("deprecation")
 		Date openingDate = new Date(120, 2, 11);
@@ -39,7 +39,7 @@ class frontPageTester {
 	
 	@Test
 	void testReadTipOfTheDay() {
-		frontPage fp = new frontPage();
+		FrontPage fp = new FrontPage();
 		fp.readTipFromFile();
 		assertFalse (fp.listOfTips.isEmpty());
 	}
