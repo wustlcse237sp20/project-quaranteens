@@ -32,6 +32,7 @@ public class windows {
 	private JTextField textField;
 	private JTextArea txtTipOfTheDay;
 	private JTextArea recOfTheDay;
+	private JTextArea txtInfo;
 	
 
 	/**
@@ -93,6 +94,8 @@ public class windows {
 		springLayout.putConstraint(SpringLayout.EAST, tabbedPane, 0, SpringLayout.EAST, counterLabel);
 		frame.getContentPane().add(tabbedPane);
 		
+		
+		//TIP OF THE DAY
 		txtTipOfTheDay = new JTextArea();
 		txtTipOfTheDay.setFont(new Font("Menlo", Font.PLAIN, 16));
 		txtTipOfTheDay.setLineWrap(true);
@@ -105,6 +108,8 @@ public class windows {
 		tabbedPane.setBackgroundAt(0, new Color(254, 255, 234));
 		txtTipOfTheDay.setColumns(10);
 		
+		
+	
 		JPanel diaryPanelTab = new JPanel();
 		diaryPanelTab.setToolTipText("");
 		diaryPanelTab.setFont(new Font("Menlo", Font.PLAIN, 16));
@@ -207,16 +212,40 @@ public class windows {
 				tabbedPane.setBackgroundAt(3, new Color(139, 189, 187));
 				recOfTheDay.setText(allRecs);
 		
+		
+		//EXERCISE TAB
 		JPanel Exercise = new JPanel();
 		tabbedPane.addTab("Exercise", null, Exercise, null);
 		Exercise.setFont(new Font("Menlo", Font.PLAIN, 16));
 		tabbedPane.setBackgroundAt(4, new Color(114, 165, 178));
 		
-		JPanel Info = new JPanel();
-		Info.setFont(new Font("Menlo", Font.PLAIN, 16));
-		tabbedPane.addTab("Info", null, Info, null);
+		
+		
+		//INFO TAB
+		txtInfo = new JTextArea();
+		txtInfo.setFont(new Font("Menlo", Font.PLAIN, 16));
+		txtInfo.setLineWrap(true);
+//		frontPageController.readInfoFromFile();
+//		String sources = frontPageController.generateInfo();
+		txtInfo.setEditable(false);
+		String credit = "Project Quaranteens was created by "
+				+ "Jefferson Duan, Sonia Muzemil, Miles Lee, and Willie Su "
+				+ "for Doug Shook's CSE 237 class at WashU in Spring 2020. \n \n"
+				+ "They wanted to create a small application to keep quarantined "
+				+ "students in the US informed, safe, healthy, and entertained "
+				+ "while isolated at home during the COVID-19 pandemic. \n \n"
+				+ "Exercise and wellness tips are courtesy of the World Health "
+				+ "Organization (Europe Office).";
+		String sources = "You can find more information about COVID-19"
+				+ " from WHO https://www.who.int, "
+				+ "the CDC https://www.cdc.gov/coronavirus/2019-ncov/index.html";
+		txtInfo.setText(credit + "\n \n" + sources);
+		tabbedPane.addTab("Info", null, txtInfo, null);
 		tabbedPane.setBackgroundAt(5, new Color(102, 139, 164));
 		
+		
+		
+		//PROGRESS BAR
 		int valueOfProgressBar = frontPageController.setRandomValueOfProgressBar();
 		JProgressBar progressBar = new JProgressBar();
 		springLayout.putConstraint(SpringLayout.NORTH, progressBar, 10, SpringLayout.SOUTH, tabbedPane);
