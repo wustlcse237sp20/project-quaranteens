@@ -14,6 +14,7 @@ public class ExercisePage {
 	public ExercisePage() {
 		this.exerciseOfTheDay="";
 	}
+	
 	/*
 	 * generateExerciseRec reads the "Exercises.txt" file and
 	 * randomly chooses a line from the file to display.

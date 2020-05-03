@@ -34,7 +34,6 @@ public class FrontPage {
 		this.movieOfTheDay = "";
 	}
 	
-	
 	public int getCounterOfTheDay() {
 		return counterOfTheDay;
 	}
@@ -42,7 +41,6 @@ public class FrontPage {
 	public void setCounterOfTheDay(int counterOfTheDay) {
 		this.counterOfTheDay = counterOfTheDay;
 	}
-
 
 	public int getProgressBarPercentage() {
 		return progressBarPercentage;

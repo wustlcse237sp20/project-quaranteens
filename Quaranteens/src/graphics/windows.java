@@ -63,6 +63,7 @@ public class windows {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		//initialize controller classes
 		Date currentDate = new Date();
 		FrontPage frontPageController = new FrontPage();
 		recommendationsController recPageController = new recommendationsController();
@@ -100,15 +101,13 @@ public class windows {
 		txtTipOfTheDay.setLineWrap(true);
 		frontPageController.readTipFromFile();
 		String tip = frontPageController.generateTipOfTheDay();
-//		txtTipOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
 		txtTipOfTheDay.setEditable(false);
 		txtTipOfTheDay.setText("Tip of the day: " + tip);
 		tabbedPane.addTab("Tip", null, txtTipOfTheDay, null);
 		tabbedPane.setBackgroundAt(0, new Color(254, 255, 234));
 		txtTipOfTheDay.setColumns(10);
 		
-		
-	
+		//DIARY 
 		JPanel diaryPanelTab = new JPanel();
 		diaryPanelTab.setToolTipText("");
 		diaryPanelTab.setFont(new Font("Menlo", Font.PLAIN, 16));
@@ -125,7 +124,6 @@ public class windows {
 		diaryPanelTab.add(contentOfDiaryEntry);
 		contentOfDiaryEntry.setText(startingTextForDiaryEntry);
 		
-		
 		JButton prevEntryButton = new JButton("Prev Entry");
 		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, prevEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
 		prevEntryButton.addActionListener(new ActionListener() {
@@ -137,6 +135,7 @@ public class windows {
 			}
 			}
 		});
+		
 		diaryPanelTab.add(prevEntryButton);
 		
 		JButton nextEntryButton = new JButton("Next Entry");
@@ -149,6 +148,7 @@ public class windows {
 				}
 			}
 		});
+		
 		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, prevEntryButton, -9, SpringLayout.NORTH, nextEntryButton);
 		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, nextEntryButton, 0, SpringLayout.SOUTH, contentOfDiaryEntry);
 		diaryPanelTab.add(nextEntryButton);
@@ -165,6 +165,7 @@ public class windows {
 				}
 			}
 		});
+		
 		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, deleteEntryButton, 29, SpringLayout.NORTH, diaryPanelTab);
 		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, deleteEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
 		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, deleteEntryButton, 91, SpringLayout.WEST, diaryPanelTab);
@@ -184,6 +185,7 @@ public class windows {
 		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, addEntryButton, -6, SpringLayout.WEST, contentOfDiaryEntry);
 		diaryPanelTab.add(addEntryButton);
 		
+		//RECOMENDATIONS
 		textField = new JTextField();
 		tabbedPane.addTab("Checklist", null, textField, null);
 		tabbedPane.setBackgroundAt(2, new Color(172, 213, 195));
@@ -205,7 +207,6 @@ public class windows {
 		recOfTheDay.setFont(new Font("Menlo", Font.PLAIN, 16));
 		recOfTheDay.setEditable(false);
 		recOfTheDay.setLineWrap(true);
-		//		recOfTheDay.setHorizontalAlignment(SwingConstants.CENTER);
 				tabbedPane.addTab("Recommendation", null, recOfTheDay, null);
 				tabbedPane.setBackgroundAt(3, new Color(139, 189, 187));
 				recOfTheDay.setText(allRecs);
@@ -229,8 +230,6 @@ public class windows {
 		txtInfo = new JTextArea();
 		txtInfo.setFont(new Font("Menlo", Font.PLAIN, 16));
 		txtInfo.setLineWrap(true);
-//		frontPageController.readInfoFromFile();
-//		String sources = frontPageController.generateInfo();
 		txtInfo.setEditable(false);
 		String credit = "Project Quaranteens was created by "
 				+ "Jefferson Duan, Sonia Muzemil, Miles Lee, and Willie Su "

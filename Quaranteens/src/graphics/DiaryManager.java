@@ -50,7 +50,6 @@ public class DiaryManager {
 		this.indexOfPrevEntry = indexOfPrevEntry;
 	}
 	
-	
 	public void addDiaryEntry(Diary entryToSave) {
 		this.listOfEntries.add(entryToSave);
 		this.indexOfDiaryEntry = this.indexOfDiaryEntry + 1;

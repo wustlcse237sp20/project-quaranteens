@@ -15,8 +15,7 @@ import org.junit.jupiter.api.Test;
 public class DiaryTester {
 	
 	public Date currentDate = new Date();
-	private ArrayList<String> diaryEntries;
-	
+
     @Test
 	void testAddDiaryEntry() {
 		DiaryManager dm = new DiaryManager();
