@@ -1,5 +1,6 @@
 package graphics;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 
 public class DiaryManager {
 	
-	private String path = "src/docs.DiaryEntries/diaryEntry";
+	private String path = "src/diaryEntries/diaryEntry.txt";
 	public ArrayList<Diary> listOfEntries = new ArrayList<Diary>();
 	public int indexOfDiaryEntry;
 	public int indexOfPrevEntry;
@@ -49,53 +50,52 @@ public class DiaryManager {
 		this.indexOfPrevEntry = indexOfPrevEntry;
 	}
 	
+	
 	public void addDiaryEntry(Diary entryToSave) {
 		this.listOfEntries.add(entryToSave);
 		this.indexOfDiaryEntry = this.indexOfDiaryEntry + 1;
 	}
 	
-	public void saveDiaryEntry(Diary entryToSave) {
-		addDiaryEntry(entryToSave);
-		for (int i = 0; i < this.listOfEntries.size(); i++) {
-			this.listOfEntries.get(i).writeToFile(entryToSave);
-		}
+	public void saveDiaryEntryToFile(String contentOfDiaryEntry) {
+		try {
+				File diaryFile = new File(path);
+				FileWriter fileWriterForDiary = new FileWriter(diaryFile, true);
+				BufferedWriter diaryToFile = new BufferedWriter(fileWriterForDiary); 
+				diaryToFile.write("\n" + contentOfDiaryEntry);
+				diaryToFile.close();
+				}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public Diary prevDiaryEntry() {
-		int index = this.indexOfDiaryEntry;
-		if (index == this.listOfEntries.size()) {
-			index = index - 2;
-		}
-		else {
-			
-		index = index - 1;
-		
-		}
-		
-		if (index < 0) {
+			int index = this.indexOfDiaryEntry;
+				index = index - 1;
+			if (index < 0) {
 			index = 0;
-		}
-		
-		this.setIndexOfPrevEntry(index);
-		return this.listOfEntries.get(index);
+			}
+			this.setIndexOfDiaryEntry(index);
+			this.setIndexOfPrevEntry(index - 1);
+			return this.listOfEntries.get(index);
 	}
 	
 	public Diary nextDiaryEntry() {
 		Diary nextEntry = this.listOfEntries.get(this.indexOfDiaryEntry);
-		if (this.indexOfPrevEntry < this.indexOfDiaryEntry) {
-			int index = this.indexOfPrevEntry;
-			index = index + 2;
+		if (this.indexOfDiaryEntry + 1 < this.listOfEntries.size()) {
+			int index = this.indexOfDiaryEntry;
+			index = index + 1;
 			nextEntry = this.listOfEntries.get(index);
+			this.setIndexOfDiaryEntry(index);
+			return nextEntry;
 		}
 		else {
 			return nextEntry;
 		}
-		return nextEntry;
 	}
 	
-	public void deleteDiaryEntry(Diary entryToRemove) {
-		this.listOfEntries.remove(entryToRemove);
-		this.indexOfDiaryEntry = this.indexOfDiaryEntry - 1;
+	public void deleteDiaryEntry(int indexOfDiaryEntry) {
+		this.listOfEntries.remove(this.indexOfDiaryEntry);
 		
 	}
 }

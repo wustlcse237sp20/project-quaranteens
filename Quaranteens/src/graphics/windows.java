@@ -9,6 +9,8 @@ import javax.swing.JTextArea;
 import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.Date;
 import java.awt.event.ActionEvent;
 import javax.swing.JProgressBar;
 import javax.swing.SwingConstants;
@@ -60,9 +62,12 @@ public class windows {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
+		Date currentDate = new Date();
 		FrontPage frontPageController = new FrontPage();
 		recommendationsController recPageController = new recommendationsController();
 		ExercisePage exercisePage = new ExercisePage();
+		DiaryManager diaryManagerController = new DiaryManager();
+		String startingTextForDiaryEntry = currentDate.toString() + "\n" + "Add Your Next Entry Here!" + "\n" + "Title: ";
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(254, 255, 223));
@@ -107,52 +112,72 @@ public class windows {
 		SpringLayout sl_diaryPanelTab = new SpringLayout();
 		diaryPanelTab.setLayout(sl_diaryPanelTab);
 		
-		JButton addEntryButton = new JButton("Add Entry");
-		addEntryButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		diaryPanelTab.add(addEntryButton);
+		JTextArea contentOfDiaryEntry = new JTextArea();
+		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, contentOfDiaryEntry, 97, SpringLayout.WEST, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, contentOfDiaryEntry, 0, SpringLayout.NORTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, contentOfDiaryEntry, 0, SpringLayout.SOUTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, contentOfDiaryEntry, 0, SpringLayout.EAST, diaryPanelTab);
+		diaryPanelTab.add(contentOfDiaryEntry);
+		contentOfDiaryEntry.setText(startingTextForDiaryEntry);
 		
-		JButton deleteEntryButton = new JButton("Delete");
-		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, deleteEntryButton, 29, SpringLayout.NORTH, diaryPanelTab);
-		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, addEntryButton, -29, SpringLayout.NORTH, deleteEntryButton);
-		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, addEntryButton, -81, SpringLayout.EAST, deleteEntryButton);
-		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, addEntryButton, -6, SpringLayout.NORTH, deleteEntryButton);
-		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, addEntryButton, 0, SpringLayout.EAST, deleteEntryButton);
-		deleteEntryButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, deleteEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
-		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, deleteEntryButton, 81, SpringLayout.WEST, diaryPanelTab);
-		diaryPanelTab.add(deleteEntryButton);
 		
-		JButton prevEntryButton = new JButton("Prev");
-		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, prevEntryButton, 99, SpringLayout.NORTH, diaryPanelTab);
-		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, deleteEntryButton, -47, SpringLayout.NORTH, prevEntryButton);
+		JButton prevEntryButton = new JButton("Prev Entry");
 		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, prevEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
-		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, prevEntryButton, -320, SpringLayout.EAST, diaryPanelTab);
 		prevEntryButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				if (diaryManagerController.listOfEntries.size() > 0) {
+				Diary prevDiary = diaryManagerController.prevDiaryEntry();
+				String prevDiaryString = prevDiary.getContentOfEntry();
+				contentOfDiaryEntry.setText(prevDiaryString);
+			}
 			}
 		});
 		diaryPanelTab.add(prevEntryButton);
 		
-		JButton nextEntryButton = new JButton("Next");
+		JButton nextEntryButton = new JButton("Next Entry");
 		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, nextEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
-		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, prevEntryButton, -6, SpringLayout.NORTH, nextEntryButton);
-		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, nextEntryButton, 135, SpringLayout.NORTH, diaryPanelTab);
-		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, nextEntryButton, 0, SpringLayout.SOUTH, diaryPanelTab);
+		nextEntryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (diaryManagerController.listOfEntries.size() > 0) {
+				Diary nextDiaryEntry = diaryManagerController.nextDiaryEntry();
+				contentOfDiaryEntry.setText(nextDiaryEntry.getContentOfEntry());
+				}
+			}
+		});
+		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, prevEntryButton, -9, SpringLayout.NORTH, nextEntryButton);
+		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, nextEntryButton, 0, SpringLayout.SOUTH, contentOfDiaryEntry);
 		diaryPanelTab.add(nextEntryButton);
 		
-		JTextArea contentOfDiaryEntry = new JTextArea();
-		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, nextEntryButton, -1, SpringLayout.WEST, contentOfDiaryEntry);
-		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, contentOfDiaryEntry, 0, SpringLayout.NORTH, diaryPanelTab);
-		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, contentOfDiaryEntry, 90, SpringLayout.WEST, prevEntryButton);
-		sl_diaryPanelTab.putConstraint(SpringLayout.SOUTH, contentOfDiaryEntry, 0, SpringLayout.SOUTH, diaryPanelTab);
-		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, contentOfDiaryEntry, 0, SpringLayout.EAST, diaryPanelTab);
-		diaryPanelTab.add(contentOfDiaryEntry);
+		JButton deleteEntryButton = new JButton("Delete Entry");
+		deleteEntryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (diaryManagerController.listOfEntries.size() > 0) {
+				diaryManagerController.deleteDiaryEntry(diaryManagerController.indexOfDiaryEntry);
+				contentOfDiaryEntry.setText(startingTextForDiaryEntry);
+				}
+				else {
+					contentOfDiaryEntry.setText(startingTextForDiaryEntry);
+				}
+			}
+		});
+		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, deleteEntryButton, 29, SpringLayout.NORTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, deleteEntryButton, 0, SpringLayout.WEST, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, deleteEntryButton, 91, SpringLayout.WEST, diaryPanelTab);
+		diaryPanelTab.add(deleteEntryButton);
+		
+		JButton addEntryButton = new JButton("Add Entry");
+		addEntryButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Diary newDiaryEntry = new Diary(currentDate, contentOfDiaryEntry.getText());
+				diaryManagerController.addDiaryEntry(newDiaryEntry);
+				diaryManagerController.saveDiaryEntryToFile(contentOfDiaryEntry.getText());
+				contentOfDiaryEntry.setText(startingTextForDiaryEntry);
+			}
+		});
+		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, addEntryButton, 0, SpringLayout.NORTH, diaryPanelTab);
+		sl_diaryPanelTab.putConstraint(SpringLayout.WEST, addEntryButton, 0, SpringLayout.WEST, prevEntryButton);
+		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, addEntryButton, -6, SpringLayout.WEST, contentOfDiaryEntry);
+		diaryPanelTab.add(addEntryButton);
 		
 		textField = new JTextField();
 		tabbedPane.addTab("Checklist", null, textField, null);
@@ -203,16 +228,12 @@ public class windows {
 		
 		int valueOfProgressBar = frontPageController.setRandomValueOfProgressBar();
 		JProgressBar progressBar = new JProgressBar();
+		springLayout.putConstraint(SpringLayout.NORTH, progressBar, 10, SpringLayout.SOUTH, tabbedPane);
+		springLayout.putConstraint(SpringLayout.WEST, progressBar, 50, SpringLayout.WEST, frame.getContentPane());
+		springLayout.putConstraint(SpringLayout.EAST, progressBar, -24, SpringLayout.EAST, frame.getContentPane());
 		progressBar.setFont(new Font("Menlo", Font.PLAIN, 16));
 		progressBar.setStringPainted(true);
 		progressBar.setValue(valueOfProgressBar);
-		springLayout.putConstraint(SpringLayout.WEST, progressBar, 32, SpringLayout.WEST, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.SOUTH, progressBar, -10, SpringLayout.SOUTH, frame.getContentPane());
-		springLayout.putConstraint(SpringLayout.EAST, progressBar, 392, SpringLayout.WEST, frame.getContentPane());
 		frame.getContentPane().add(progressBar);
-		
-		
-		
-
 	}
 }
