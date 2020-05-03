@@ -6,12 +6,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class exercisePage {
+public class ExercisePage {
 	
 	private String exerciseOfTheDay;
 	public ArrayList<String> listOfExercises;
 	
-	public exercisePage() {
+	public ExercisePage() {
 		this.exerciseOfTheDay="";
 	}
 	/*

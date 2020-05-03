@@ -62,7 +62,7 @@ public class windows {
 	private void initialize() {
 		FrontPage frontPageController = new FrontPage();
 		recommendationsController recPageController = new recommendationsController();
-		exercisePage exercisePage = new exercisePage();
+		ExercisePage exercisePage = new ExercisePage();
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(254, 255, 223));
