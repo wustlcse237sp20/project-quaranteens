@@ -24,6 +24,12 @@ public class Diary {
 		return this.dateCreated;
 	}
 	
+	public String dateToString() {
+		@SuppressWarnings("deprecation")
+		String dateToString = this.dateCreated.toString();
+		return dateToString;
+	}
+	
 	public String getContentOfEntry() {
 		return this.contentOfEntry;
 	}
