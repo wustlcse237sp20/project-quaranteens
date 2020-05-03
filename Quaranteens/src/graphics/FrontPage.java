@@ -53,10 +53,8 @@ public class FrontPage {
 
 
 	/*
-		 * generateTipOfTheDay reads the "randomTipsOfTheDay.txt" file and
-		 * randomly chooses a line from the file to display for the use
-		 * returns the random tip of the day
-		 */
+	 * return randomly generated line from "readRandomTipsOfTheDay.txt"
+	 */
 	public String generateTipOfTheDay() {
 		int randomTipIndex = (int) (Math.random() * this.listOfTips.size());
 		String tipToShow = this.listOfTips.get(randomTipIndex);
@@ -64,7 +62,10 @@ public class FrontPage {
 		
 		return this.tipOfTheDay;
 	}
-
+	/*
+	 * readTipFromFile reads each line of the "randomTipsOfTheDay.txt" file and 
+	 * adds it to an array listOfTips 
+	 */
 	public void readTipFromFile() {
 		this.listOfTips = new ArrayList<String>();
 		String path = "src/docs/randomTipsOfTheDay.txt";
@@ -80,14 +81,13 @@ public class FrontPage {
 		catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		
 			e.printStackTrace();
 		}
 	}
 	
 	/*
-	 * updateDayCounter calculates the number of days since the user has started quarantine by subtracting the current time by the time the program was opened for the first time.
-	 * returns the numnber of days since quarantine
+	 * return the number of days in Quarantine since WashU kicked us out
 	 */
 	public int updateDayCounter() {
 		long currentTimeInMillis = System.currentTimeMillis();
@@ -102,7 +102,9 @@ public class FrontPage {
 	}
 	
 	/*
-	 * setRandomValueOfProgressBar randomly generates a max value for the progress bar, which never ends, meant to jump around, comedic
+	 * return randomly generated value for the progress bar, 
+	 * which never ends, meant to jump around, 
+	 * meant to be comedic relief
 	 */
 	public int setRandomValueOfProgressBar() {
 		int value = ((int) (Math.random() * 100));

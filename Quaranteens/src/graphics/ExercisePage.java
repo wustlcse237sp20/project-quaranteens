@@ -16,8 +16,7 @@ public class ExercisePage {
 	}
 	
 	/*
-	 * generateExerciseRec reads the "Exercises.txt" file and
-	 * randomly chooses a line from the file to display.
+	 * return randomly chosen line from the "Exercises.txt"
 	 */
 	public String generateExerciseRec() {
 		int randomExerciseIndex = (int) (Math.random() * this.listOfExercises.size());
@@ -27,6 +26,10 @@ public class ExercisePage {
 		return this.exerciseOfTheDay;
 	}
 	
+	/*
+	 * readExerciseFromFile reads the file "Exercises.txt" and
+	 * adds it to an ArrayList
+	 */
 	public void readExerciseFromFile() {
 		this.listOfExercises = new ArrayList<String>();
 		String path = "src/docs/Exercises.txt";
