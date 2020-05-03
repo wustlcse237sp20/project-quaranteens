@@ -33,7 +33,7 @@ public class windows {
 	private JTextArea txtTipOfTheDay;
 	private JTextArea recOfTheDay;
 	private JTextArea txtInfo;
-	
+	private JTextArea exerciseOfTheDay;
 
 	/**
 	 * Launch the application.
@@ -66,10 +66,9 @@ public class windows {
 		Date currentDate = new Date();
 		FrontPage frontPageController = new FrontPage();
 		recommendationsController recPageController = new recommendationsController();
-		ArrayList<Diary> diaryEntries = new ArrayList<Diary>();
+		ExercisePage exercisePage = new ExercisePage();
 		DiaryManager diaryManagerController = new DiaryManager();
 		String startingTextForDiaryEntry = currentDate.toString() + "\n" + "Add Your Next Entry Here!" + "\n" + "Title: ";
-		
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(254, 255, 223));
@@ -164,9 +163,6 @@ public class windows {
 				else {
 					contentOfDiaryEntry.setText(startingTextForDiaryEntry);
 				}
-				
-				
-			
 			}
 		});
 		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, deleteEntryButton, 29, SpringLayout.NORTH, diaryPanelTab);
@@ -179,7 +175,7 @@ public class windows {
 			public void actionPerformed(ActionEvent e) {
 				Diary newDiaryEntry = new Diary(currentDate, contentOfDiaryEntry.getText());
 				diaryManagerController.addDiaryEntry(newDiaryEntry);
-				diaryEntries.add(newDiaryEntry);
+				diaryManagerController.saveDiaryEntryToFile(contentOfDiaryEntry.getText());
 				contentOfDiaryEntry.setText(startingTextForDiaryEntry);
 			}
 		});
@@ -193,6 +189,8 @@ public class windows {
 		tabbedPane.setBackgroundAt(2, new Color(172, 213, 195));
 		textField.setFont(new Font("Menlo", Font.PLAIN, 16));
 		textField.setColumns(10);
+		
+		//generates the recommendation text
 		recPageController.readMovieRecFromFile();
 		String movie = recPageController.generateMovieRec();
 		recPageController.readBookRecFromFile();
@@ -212,15 +210,21 @@ public class windows {
 				tabbedPane.setBackgroundAt(3, new Color(139, 189, 187));
 				recOfTheDay.setText(allRecs);
 		
-		
-		//EXERCISE TAB
-		JPanel Exercise = new JPanel();
-		tabbedPane.addTab("Exercise", null, Exercise, null);
-		Exercise.setFont(new Font("Menlo", Font.PLAIN, 16));
-		tabbedPane.setBackgroundAt(4, new Color(114, 165, 178));
-		
-		
-		
+		//generates the exercise text
+		exercisePage.readExerciseFromFile();
+		String exercise = exercisePage.generateExerciseRec();
+		String fullExercise = "The WHO recommends 150 minutes of moderate-intensity or 75 minutes of vigorous-intensity physical activity per week, or a combination of both. These recommendations can still be achieved even at home, with no special equipment and with limited space."
+				+ "\n \n" + "To support individuals in staying physically active while at home, WHO/Europe has prepared a set of examples of home-based exercises."
+				+ "\n \n" + exercise;
+				
+		exerciseOfTheDay = new JTextArea();
+		exerciseOfTheDay.setFont(new Font("Menlo", Font.PLAIN, 16));
+		exerciseOfTheDay.setEditable(false);
+		exerciseOfTheDay.setLineWrap(true);
+				tabbedPane.addTab("Exercise", null, exerciseOfTheDay, null);
+				tabbedPane.setBackgroundAt(4, new Color(114, 165, 178));
+				exerciseOfTheDay.setText(fullExercise);
+    
 		//INFO TAB
 		txtInfo = new JTextArea();
 		txtInfo.setFont(new Font("Menlo", Font.PLAIN, 16));
@@ -242,8 +246,6 @@ public class windows {
 		txtInfo.setText(credit + "\n" + "\n" + sources);
 		tabbedPane.addTab("Info", null, txtInfo, null);
 		tabbedPane.setBackgroundAt(5, new Color(102, 139, 164));
-		
-		
 		
 		//PROGRESS BAR
 		int valueOfProgressBar = frontPageController.setRandomValueOfProgressBar();
