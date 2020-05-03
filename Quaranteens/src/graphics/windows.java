@@ -29,7 +29,6 @@ import javax.swing.JPanel;
 public class windows {
 
 	private JFrame frame;
-	private JTextField textField;
 	private JTextArea txtTipOfTheDay;
 	private JTextArea recOfTheDay;
 	private JTextArea txtInfo;
@@ -185,13 +184,6 @@ public class windows {
 		sl_diaryPanelTab.putConstraint(SpringLayout.EAST, addEntryButton, -6, SpringLayout.WEST, contentOfDiaryEntry);
 		diaryPanelTab.add(addEntryButton);
 		
-		//RECOMENDATIONS
-		textField = new JTextField();
-		tabbedPane.addTab("Checklist", null, textField, null);
-		tabbedPane.setBackgroundAt(2, new Color(172, 213, 195));
-		textField.setFont(new Font("Menlo", Font.PLAIN, 16));
-		textField.setColumns(10);
-		
 		//generates the recommendation text
 		recPageController.readMovieRecFromFile();
 		String movie = recPageController.generateMovieRec();
@@ -208,7 +200,7 @@ public class windows {
 		recOfTheDay.setEditable(false);
 		recOfTheDay.setLineWrap(true);
 				tabbedPane.addTab("Recommendation", null, recOfTheDay, null);
-				tabbedPane.setBackgroundAt(3, new Color(139, 189, 187));
+				tabbedPane.setBackgroundAt(2, new Color(139, 189, 187));
 				recOfTheDay.setText(allRecs);
 		
 		//generates the exercise text
@@ -223,7 +215,7 @@ public class windows {
 		exerciseOfTheDay.setEditable(false);
 		exerciseOfTheDay.setLineWrap(true);
 				tabbedPane.addTab("Exercise", null, exerciseOfTheDay, null);
-				tabbedPane.setBackgroundAt(4, new Color(114, 165, 178));
+				tabbedPane.setBackgroundAt(3, new Color(114, 165, 178));
 				exerciseOfTheDay.setText(fullExercise);
     
 		//INFO TAB
@@ -244,7 +236,7 @@ public class windows {
 				+ "the CDC https://www.cdc.gov/coronavirus/2019-ncov/index.html";
 		txtInfo.setText(credit + "\n" + "\n" + sources);
 		tabbedPane.addTab("Info", null, txtInfo, null);
-		tabbedPane.setBackgroundAt(5, new Color(102, 139, 164));
+		tabbedPane.setBackgroundAt(4, new Color(102, 139, 164));
 		
 		//PROGRESS BAR
 		int valueOfProgressBar = frontPageController.setRandomValueOfProgressBar();
