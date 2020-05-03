@@ -28,6 +28,9 @@ class ExercisePageTester {
 		ep.readExerciseFromFile();
 		String sampleExercise = ep.generateExerciseRec();
 		assertNotSame(sampleExercise, ep.generateExerciseRec());
+		if (sampleExercise == ep.generateExerciseRec()) {
+			System.out.println("The same message was generated twice. Please run the test again. If this happens a second time then something is wrong.");
+		}
 	}
 	
 }
