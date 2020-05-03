@@ -73,7 +73,7 @@ public class windows {
 		
 		frame = new JFrame();
 		frame.getContentPane().setBackground(new Color(254, 255, 223));
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 539, 533);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setFont(new Font("Menlo", Font.PLAIN, 16));
 		
@@ -239,7 +239,7 @@ public class windows {
 		String sources = "You can find more information about COVID-19"
 				+ " from WHO https://www.who.int, "
 				+ "the CDC https://www.cdc.gov/coronavirus/2019-ncov/index.html";
-		txtInfo.setText(credit + "\n \n" + sources);
+		txtInfo.setText(credit + "\n" + "\n" + sources);
 		tabbedPane.addTab("Info", null, txtInfo, null);
 		tabbedPane.setBackgroundAt(5, new Color(102, 139, 164));
 		
