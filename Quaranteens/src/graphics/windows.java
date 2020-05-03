@@ -65,7 +65,6 @@ public class windows {
 		Date currentDate = new Date();
 		FrontPage frontPageController = new FrontPage();
 		recommendationsController recPageController = new recommendationsController();
-		ArrayList<Diary> diaryEntries = new ArrayList<Diary>();
 		DiaryManager diaryManagerController = new DiaryManager();
 		String startingTextForDiaryEntry = currentDate.toString() + "\n" + "Add Your Next Entry Here!" + "\n" + "Title: ";
 		
@@ -159,9 +158,6 @@ public class windows {
 				else {
 					contentOfDiaryEntry.setText(startingTextForDiaryEntry);
 				}
-				
-				
-			
 			}
 		});
 		sl_diaryPanelTab.putConstraint(SpringLayout.NORTH, deleteEntryButton, 29, SpringLayout.NORTH, diaryPanelTab);
@@ -174,7 +170,7 @@ public class windows {
 			public void actionPerformed(ActionEvent e) {
 				Diary newDiaryEntry = new Diary(currentDate, contentOfDiaryEntry.getText());
 				diaryManagerController.addDiaryEntry(newDiaryEntry);
-				diaryEntries.add(newDiaryEntry);
+				diaryManagerController.saveDiaryEntryToFile(contentOfDiaryEntry.getText());
 				contentOfDiaryEntry.setText(startingTextForDiaryEntry);
 			}
 		});

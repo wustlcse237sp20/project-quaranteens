@@ -27,8 +27,22 @@ public class DiaryTester {
 	}
 	
     @Test
-	void testSaveDiaryEntry() {
-    	
+	void testSaveDiaryEntryToFile() {
+    	DiaryManager dm = new DiaryManager();
+    	String path = "src/diaryEntries/diaryEntry.txt";
+    	dm.saveDiaryEntryToFile("test");
+    	try {
+    		BufferedReader readDiaryEntry = new BufferedReader (new FileReader(path));
+    		String line = readDiaryEntry.readLine();
+    		if (line.isEmpty()) {
+    			fail("This is not empty");
+    		}
+    		readDiaryEntry.close();
+    	}
+    	catch (IOException e) {
+			e.printStackTrace();
+		}
+    
 	}
 	
     @Test

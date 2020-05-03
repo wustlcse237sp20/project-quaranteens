@@ -1,5 +1,6 @@
 package graphics;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 
 public class DiaryManager {
 	
-	private String path = "src/docs.DiaryEntries/diaryEntry";
+	private String path = "src/diaryEntries/diaryEntry.txt";
 	public ArrayList<Diary> listOfEntries = new ArrayList<Diary>();
 	public int indexOfDiaryEntry;
 	public int indexOfPrevEntry;
@@ -49,16 +50,23 @@ public class DiaryManager {
 		this.indexOfPrevEntry = indexOfPrevEntry;
 	}
 	
+	
 	public void addDiaryEntry(Diary entryToSave) {
 		this.listOfEntries.add(entryToSave);
 		this.indexOfDiaryEntry = this.indexOfDiaryEntry + 1;
 	}
 	
-	public void saveDiaryEntry(Diary entryToSave) {
-		addDiaryEntry(entryToSave);
-		for (int i = 0; i < this.listOfEntries.size(); i++) {
-			this.listOfEntries.get(i).writeToFile(entryToSave);
-		}
+	public void saveDiaryEntryToFile(String contentOfDiaryEntry) {
+		try {
+				File diaryFile = new File(path);
+				FileWriter fileWriterForDiary = new FileWriter(diaryFile, true);
+				BufferedWriter diaryToFile = new BufferedWriter(fileWriterForDiary); 
+				diaryToFile.write("\n" + contentOfDiaryEntry);
+				diaryToFile.close();
+				}
+			catch (IOException e) {
+				e.printStackTrace();
+			}
 	}
 	
 	public Diary prevDiaryEntry() {
