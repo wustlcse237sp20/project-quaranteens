@@ -1,4 +1,19 @@
 # cse237-project
+
+--------------------------------------ITERATION 3--------------------------------------
+WHAT WAS COMPLETED:
+- Issues in Iteration 2:
+	- Removed the unnecessary feature-ui-window branch
+	- Finished up Diary page to be functional
+	- Completed bash script to be functional
+- Created a daily exercise recommendation page (titled Excercise)
+- Added an Info page, which contains credits and a source
+- Added appropriate JUnit tests for new features
+
+THINGS THAT ARE IMPLEMENTED BUT DON'T NECESSARILY WORK:
+- There is a bug in the Diary page wherein the Delete button does not work properly
+- On certain computers, the certain characters in the text on the Exercise page are not displayed properly (usually the '-') 
+
 --------------------------------------ITERATION 2--------------------------------------
 WHAT WAS COMPLETED:
 - Issues in Iteration 1:
