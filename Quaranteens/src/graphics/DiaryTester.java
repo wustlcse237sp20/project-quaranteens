@@ -28,26 +28,7 @@ public class DiaryTester {
 	
     @Test
 	void testSaveDiaryEntry() {
-    	DiaryManager dm = new DiaryManager();
-		String path = "src/docs.DiaryEntries/diaryEntry.txt";
-		try {
-			BufferedReader readDiary = new BufferedReader(new FileReader(path));
-			String line = readDiary.readLine();
-			while (line != null) {
-				diaryEntries.add(line);
-				line = readDiary.readLine();
-			}
-			readDiary.close();
-		} 
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		Diary diary1 = new Diary(currentDate, "hi");
-		dm.saveDiaryEntry(diary1);
-		assertFalse(diaryEntries.isEmpty());
+    	
 	}
 	
     @Test
@@ -64,7 +45,7 @@ public class DiaryTester {
 		dm.addDiaryEntry(diary3);
 		dm.addDiaryEntry(diary4);
 		dm.addDiaryEntry(diary5);
-		assertEquals(dm.listOfEntries.get(3), dm.prevDiaryEntry());
+		assertEquals(dm.listOfEntries.get(4), dm.prevDiaryEntry());
 		dm.setIndexOfDiaryEntry(2);
 		assertEquals(dm.listOfEntries.get(1), dm.prevDiaryEntry());
 	}
@@ -99,7 +80,8 @@ public class DiaryTester {
 		Diary diary2 = new Diary(currentDate, "Hello");
 		dm.addDiaryEntry(diary1);
 		dm.addDiaryEntry(diary2);
-		dm.deleteDiaryEntry(diary2);
+		dm.setIndexOfDiaryEntry(1);
+		dm.deleteDiaryEntry(dm.indexOfDiaryEntry);
 		assertFalse(dm.listOfEntries.contains(diary2));
 		assertEquals(1, dm.getIndexOfDiaryEntry());
 	}

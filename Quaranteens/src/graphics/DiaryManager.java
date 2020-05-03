@@ -62,40 +62,32 @@ public class DiaryManager {
 	}
 	
 	public Diary prevDiaryEntry() {
-		int index = this.indexOfDiaryEntry;
-		if (index == this.listOfEntries.size()) {
-			index = index - 2;
-		}
-		else {
-			
-		index = index - 1;
-		
-		}
-		
-		if (index < 0) {
+			int index = this.indexOfDiaryEntry;
+				index = index - 1;
+			if (index < 0) {
 			index = 0;
-		}
-		
-		this.setIndexOfPrevEntry(index);
-		return this.listOfEntries.get(index);
+			}
+			this.setIndexOfDiaryEntry(index);
+			this.setIndexOfPrevEntry(index - 1);
+			return this.listOfEntries.get(index);
 	}
 	
 	public Diary nextDiaryEntry() {
 		Diary nextEntry = this.listOfEntries.get(this.indexOfDiaryEntry);
-		if (this.indexOfPrevEntry < this.indexOfDiaryEntry) {
-			int index = this.indexOfPrevEntry;
-			index = index + 2;
+		if (this.indexOfDiaryEntry + 1 < this.listOfEntries.size()) {
+			int index = this.indexOfDiaryEntry;
+			index = index + 1;
 			nextEntry = this.listOfEntries.get(index);
+			this.setIndexOfDiaryEntry(index);
+			return nextEntry;
 		}
 		else {
 			return nextEntry;
 		}
-		return nextEntry;
 	}
 	
-	public void deleteDiaryEntry(Diary entryToRemove) {
-		this.listOfEntries.remove(entryToRemove);
-		this.indexOfDiaryEntry = this.indexOfDiaryEntry - 1;
+	public void deleteDiaryEntry(int indexOfDiaryEntry) {
+		this.listOfEntries.remove(this.indexOfDiaryEntry);
 		
 	}
 }
