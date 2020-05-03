@@ -50,12 +50,19 @@ public class DiaryManager {
 		this.indexOfPrevEntry = indexOfPrevEntry;
 	}
 	
-	
+	/*
+	 * entryToSave a Diary Object with Time of Entry and String Content of Entry
+	 * adds the Diary to the ArrayList listOfEntries and increments the index
+	 */
 	public void addDiaryEntry(Diary entryToSave) {
 		this.listOfEntries.add(entryToSave);
 		this.indexOfDiaryEntry = this.indexOfDiaryEntry + 1;
 	}
 	
+	/*
+	 * contentOfDiaryEntry the content of diary that users type into (Swing JTextArea)
+	 * writes/appends the diary entry to the file diaryEntry.txt
+	 */
 	public void saveDiaryEntryToFile(String contentOfDiaryEntry) {
 		try {
 				File diaryFile = new File(path);
@@ -68,7 +75,9 @@ public class DiaryManager {
 				e.printStackTrace();
 			}
 	}
-	
+	/*
+	 * return the previous Diary entry, assuming there is at least two entries
+	 */
 	public Diary prevDiaryEntry() {
 			int index = this.indexOfDiaryEntry;
 				index = index - 1;
@@ -79,7 +88,9 @@ public class DiaryManager {
 			this.setIndexOfPrevEntry(index - 1);
 			return this.listOfEntries.get(index);
 	}
-	
+	/*
+	 * return the next Diary entry, assuming there is at least two entries
+	 */
 	public Diary nextDiaryEntry() {
 		Diary nextEntry = this.listOfEntries.get(this.indexOfDiaryEntry);
 		if (this.indexOfDiaryEntry + 1 < this.listOfEntries.size()) {
@@ -93,7 +104,10 @@ public class DiaryManager {
 			return nextEntry;
 		}
 	}
-	
+	/*
+	 * indexOfDiaryEntry index of the Diary entry to be deleted
+	 * removes the specified Diary at the index
+	 */
 	public void deleteDiaryEntry(int indexOfDiaryEntry) {
 		this.listOfEntries.remove(this.indexOfDiaryEntry);
 		

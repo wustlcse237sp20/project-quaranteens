@@ -21,9 +21,7 @@ public class recommendationsController {
 		this.bookOfTheDay="";
 	}
 	/*
-	 * generateMovieRec reads the "movieRecs.txt" file and
-	 * randomly chooses a line from the file to display for the use
-	 * returns the random movie rec of the day
+	 * return randomly chosen line from "MoviesRecs.txt" file
 	 */
 	public String generateMovieRec() {
 		int randomMovieIndex = (int) (Math.random() * this.listOfMovies.size());
@@ -32,7 +30,10 @@ public class recommendationsController {
 		
 		return this.movieOfTheDay;
 	}
-	
+	/*
+	 * readMovieRecFromFile reads the file "MovieRecs.txt" and
+	 * adds it to an ArrayList listOfMovies
+	 */
 	public void readMovieRecFromFile() {
 		this.listOfMovies = new ArrayList<String>();
 		String path = "src/docs/MovieRecs.txt";
@@ -54,9 +55,7 @@ public class recommendationsController {
 	}
 	
 	/*
-	 * generateMusicRec reads the "MusicRecs.txt" file and
-	 * randomly chooses a line from the file to display for the use
-	 * returns the random music rec of the day
+	 * return random music recommendation from file "MusicRecs.txt"
 	 */
 	public String generateMusicRec() {
 		int randomMusicIndex = (int) (Math.random() * this.listOfMusic.size());
@@ -66,6 +65,10 @@ public class recommendationsController {
 		return this.musicOfTheDay;
 	}
 	
+	/*
+	 *readMusicRecFromFile reads each line of "MusicRecs.txt" file and
+	 *adds it to the ArrayList ListOfMusic 
+	 */
 	public void readMusicRecFromFile() {
 		this.listOfMusic = new ArrayList<String>();
 		String path = "src/docs/MusicRecs.txt";
@@ -88,9 +91,7 @@ public class recommendationsController {
 	
 	
 	/*
-	 * generateBookRec reads the "BookRecs.txt" file and
-	 * randomly chooses a line from the file to display for the use
-	 * returns the random book rec of the day
+	 * return random book recommendation based from file "BookRecs.txt"
 	 */
 	public String generateBookRec() {
 		int randomBookIndex = (int) (Math.random() * this.listOfBooks.size());
@@ -100,6 +101,10 @@ public class recommendationsController {
 		return this.bookOfTheDay;
 	}
 	
+	/*
+	 * readBookRecFromFile reads each line of the file "BookRecs.txt" and
+	 * adds it to the ArrayList listOfBooks
+	 */
 	public void readBookRecFromFile() {
 		this.listOfBooks = new ArrayList<String>();
 		String path = "src/docs/BookRecs.txt";

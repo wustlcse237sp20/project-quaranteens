@@ -26,7 +26,6 @@ class FrontPageTester {
 		assertEquals (numOfDaysSinceProgramStarted, fp.counterOfTheDay);
 	}
 	
-	
 	@Test
 	void testGenerateTipOfTheDay() {
 		FrontPage fp = new FrontPage();
@@ -35,7 +34,6 @@ class FrontPageTester {
 		System.out.println(tip);
 		assertEquals(String.class, tip.getClass());
 	}
-	
 	
 	@Test
 	void testReadTipOfTheDay() {

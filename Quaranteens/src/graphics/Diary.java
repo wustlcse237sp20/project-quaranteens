@@ -12,7 +12,6 @@ public class Diary {
 	
 	private Date dateCreated;
 	private String contentOfEntry;
-	private String filePath = "src/docs.DiaryEntries/diaryEntry.txt";
 	
 	public Diary(Date dateCreated, String contentOfEntry) {
 		this.dateCreated = dateCreated;
@@ -24,7 +23,6 @@ public class Diary {
 	}
 	
 	public String dateToString() {
-		@SuppressWarnings("deprecation")
 		String dateToString = this.dateCreated.toString();
 		return dateToString;
 	}
